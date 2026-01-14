@@ -143,19 +143,24 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 20px;
             color: white;
             background: linear-gradient(45deg, rgba(255, 123, 41, 0.85), rgba(255, 193, 7, 0.8));
+            text-align: center;
         }
         
         .banner h2 {
-            font-size: 22px;
-            margin-bottom: 8px;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .banner p {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 16px;
+            opacity: 0.95;
+            max-width: 80%;
         }
         
         /* 快捷入口 */
@@ -172,6 +177,7 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
         }
         
         .quick-icon {
@@ -212,6 +218,7 @@
         .section-more {
             color: var(--primary);
             font-size: 14px;
+            cursor: pointer;
         }
         
         /* 秒杀专区 */
@@ -329,6 +336,43 @@
             gap: 12px;
             padding: 0 16px;
             margin-bottom: 16px;
+        }
+        
+        /* 搜索结果显示区域 */
+        .search-results {
+            padding: 0 16px;
+            margin-bottom: 16px;
+            display: none;
+        }
+        
+        .search-results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .search-results-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .clear-search {
+            color: var(--primary);
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray);
+        }
+        
+        .no-results i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
         }
         
         /* 底部导航 */
@@ -516,7 +560,7 @@
             color: white;
         }
         
-        /* 购物车 */
+        /* 购物车侧边栏 */
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -641,17 +685,390 @@
                 border-right: 1px solid var(--border);
             }
         }
+        /* 分类页面样式 */
+        .category-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .category-content {
+            padding: 16px;
+            padding-top: 60px;
+        }
+
+        .category-section {
+            margin-bottom: 24px;
+        }
+
+        .category-section .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 12px 4px;
+            border-radius: 8px;
+            background-color: var(--white);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .category-name {
+            font-size: 12px;
+            color: var(--dark);
+        }
+
+        /* 分类商品列表页面 */
+        .category-products-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2001;
+            overflow-y: auto;
+        }
+
+        .category-products-content {
+            padding: 16px;
+            padding-top: 60px;
+        }
+
+        /* 分类商品筛选 */
+        .category-filter {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+        }
+
+        .filter-item {
+            padding: 6px 12px;
+            background-color: var(--light-gray);
+            border-radius: 16px;
+            font-size: 12px;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .filter-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* 快捷入口添加点击效果 */
+        .quick-item {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .quick-item:hover {
+            transform: translateY(-3px);
+        }
+
+        /* 关于我们页面样式 */
+        .about-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2002;
+            overflow-y: auto;
+        }
+
+        .about-content {
+            padding: 16px;
+            padding-top: 60px;
+        }
+
+        .about-section {
+            margin-bottom: 24px;
+        }
+
+        .about-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .about-text {
+            line-height: 1.6;
+            color: var(--gray);
+            text-align: justify;
+        }
+
+        .highlight-text {
+            color: var(--primary);
+            font-weight: bold;
+            background-color: var(--primary-light);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* 特色服务 */
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background-color: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--dark);
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* 联系信息 */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .contact-content {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .contact-desc {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .contact-note {
+            font-size: 13px;
+            color: var(--gray);
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background-color: var(--white);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* 服务承诺 */
+        .promise-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE8D9 100%);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #FFD8B8;
+        }
+
+        .promise-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .promise-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .promise-items {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .promise-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--dark);
+            padding: 8px 12px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* 关于我们页面底部按钮 */
+        .about-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            padding: 16px 0;
+        }
+
+        .about-actions .action-btn {
+            flex: 1;
+            padding: 14px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        /* 爆款推荐页面 */
+        .hot-products-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2003;
+            overflow-y: auto;
+        }
+
+        .hot-products-content {
+            padding: 16px;
+            padding-top: 60px;
+        }
+        
+        /* 页面切换动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .page-enter {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        /* 加载动画 */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--light-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <!-- 顶部导航 -->
     <header class="header">
         <div class="logo">
-            <i class="fas fa-shopping-bag"></i>
-            <span>零食口袋</span>
+            <i class="fas fa-store"></i>
+            <span>佳宇商贸</span>
         </div>
         <div class="header-actions">
-            <div class="header-icon">
+            <div class="header-icon" id="search-icon">
                 <i class="fas fa-search"></i>
             </div>
             <div class="header-icon" id="cart-icon">
@@ -662,10 +1079,10 @@
     </header>
 
     <!-- 搜索栏 -->
-    <div class="search-container">
+    <div class="search-container" id="search-container">
         <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="搜索零食、饮料、品牌...">
+            <input type="text" placeholder="搜索零食、饮料、品牌..." id="search-input">
         </div>
     </div>
 
@@ -675,34 +1092,44 @@
         <div class="banner-container">
             <div class="banner">
                 <div class="banner-content">
-                    <h2>夏日畅饮节</h2>
-                    <p>冷饮全场8折，第二件半价</p>
-                    <p style="font-size: 12px; margin-top: 8px;">活动时间：7.1-7.31</p>
+                    <h2>四川佳宇商贸配送中心</h2>
+                    <p>专业食品饮料批发配送</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- 搜索结果区域 -->
+        <div class="search-results" id="search-results">
+            <div class="search-results-header">
+                <div class="search-results-title">搜索结果</div>
+                <div class="clear-search" id="clear-search">清除搜索</div>
+            </div>
+            <div class="product-grid" id="search-results-grid">
+                <!-- 搜索结果会动态添加到这里 -->
             </div>
         </div>
 
         <!-- 快捷入口 -->
         <div class="quick-access">
-            <div class="quick-item">
+            <div class="quick-item" data-category="drink">
                 <div class="quick-icon drink">
                     <i class="fas fa-wine-bottle"></i>
                 </div>
                 <span class="quick-text">饮料</span>
             </div>
-            <div class="quick-item">
+            <div class="quick-item" data-category="snack">
                 <div class="quick-icon snack">
                     <i class="fas fa-cookie-bite"></i>
                 </div>
                 <span class="quick-text">零食</span>
             </div>
-            <div class="quick-item">
+            <div class="quick-item" data-category="meihao">
                 <div class="quick-icon combo">
-                    <i class="fas fa-gift"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <span class="quick-text">套餐</span>
+                <span class="quick-text">美好系列</span>
             </div>
-            <div class="quick-item">
+            <div class="quick-item" data-category="hot">
                 <div class="quick-icon hot">
                     <i class="fas fa-fire"></i>
                 </div>
@@ -725,120 +1152,357 @@
             </div>
             
             <div class="product-list">
-                <!-- 商品1 -->
-                <div class="product-card" data-id="1">
-                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="可乐" class="product-img">
-                    <div class="product-info">
-                        <div class="product-name">可口可乐330ml*6瓶</div>
-                        <div class="product-price">¥19.9<span class="original-price">¥24.0</span></div>
-                        <button class="add-to-cart">
-                            <i class="fas fa-cart-plus"></i> 加入购物车
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 商品2 -->
-                <div class="product-card" data-id="2">
-                    <img src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="薯片" class="product-img">
-                    <div class="product-info">
-                        <div class="product-name">乐事薯片大礼包</div>
-                        <div class="product-price">¥29.9<span class="original-price">¥36.0</span></div>
-                        <button class="add-to-cart">
-                            <i class="fas fa-cart-plus"></i> 加入购物车
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- 商品3 -->
-                <div class="product-card" data-id="3">
-                    <img src="https://images.unsplash.com/photo-1602922960046-6f4d45b9a6d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="巧克力" class="product-img">
-                    <div class="product-info">
-                        <div class="product-name">德芙巧克力分享装</div>
-                        <div class="product-price">¥15.8<span class="original-price">¥20.0</span></div>
-                        <button class="add-to-cart">
-                            <i class="fas fa-cart-plus"></i> 加入购物车
-                        </button>
-                    </div>
-                </div>
+                <!-- 秒杀商品会通过JavaScript动态生成 -->
             </div>
         </div>
 
         <!-- 爆款推荐 -->
         <div class="section-header">
             <div class="section-title">爆款推荐</div>
-            <div class="section-more">查看更多 ></div>
+            <div class="section-more" id="view-more-hot">查看更多 ></div>
         </div>
         
-        <div class="product-grid">
-            <!-- 商品1 -->
-            <div class="product-card" data-id="4">
-                <img src="https://images.unsplash.com/photo-1571575173700-afb9492e6a50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="坚果" class="product-img">
-                <div class="product-info">
-                    <div class="product-name">火腿肠</div>
-                    <div class="product-price">¥12.8</div>
-                    <button class="add-to-cart">
-                        <i class="fas fa-cart-plus"></i> 加入购物车
-                    </button>
-                </div>
-            </div>
-            
-            <!-- 商品2 -->
-            <div class="product-card" data-id="5">
-                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="饼干" class="product-img">
-                <div class="product-info">
-                    <div class="product-name">奥利奥夹心饼干</div>
-                    <div class="product-price">¥8.5</div>
-                    <button class="add-to-cart">
-                        <i class="fas fa-cart-plus"></i> 加入购物车
-                    </button>
-                </div>
-            </div>
-            
-            <!-- 商品3 -->
-            <div class="product-card" data-id="6">
-                <img src="https://images.unsplash.com/photo-1600721391689-2564bb8055de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="奶茶" class="product-img">
-                <div class="product-info">
-                    <div class="product-name">香飘飘奶茶杯装</div>
-                    <div class="product-price">¥6.5</div>
-                    <button class="add-to-cart">
-                        <i class="fas fa-cart-plus"></i> 加入购物车
-                    </button>
-                </div>
-            </div>
-            
-            <!-- 商品4 -->
-            <div class="product-card" data-id="7">
-                <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="冰淇淋" class="product-img">
-                <div class="product-info">
-                    <div class="product-name">梦龙冰淇淋组合</div>
-                    <div class="product-price">¥32.0</div>
-                    <button class="add-to-cart">
-                        <i class="fas fa-cart-plus"></i> 加入购物车
-                    </button>
-                </div>
-            </div>
+        <div class="product-grid" id="main-product-grid">
+            <!-- 爆款商品会通过JavaScript动态生成 -->
         </div>
     </main>
 
     <!-- 底部导航 -->
     <nav class="bottom-nav">
-        <div class="nav-item active">
+        <div class="nav-item active" data-page="home">
             <i class="fas fa-home nav-icon"></i>
             <span>首页</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-page="category">
             <i class="fas fa-th-large nav-icon"></i>
             <span>分类</span>
         </div>
-        <div class="nav-item">
-            <i class="fas fa-compass nav-icon"></i>
-            <span>发现</span>
+        <div class="nav-item" data-page="hot">
+            <i class="fas fa-fire nav-icon"></i>
+            <span>爆款</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-page="about">
             <i class="fas fa-user nav-icon"></i>
             <span>我的</span>
         </div>
     </nav>
+
+    <!-- 爆款推荐页面 -->
+    <div class="hot-products-page" id="hot-products-page" style="display: none;">
+        <div class="detail-header">
+            <div class="detail-close" id="hot-products-close">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="cart-title">爆款推荐</div>
+        </div>
+        
+        <div class="hot-products-content">
+            <div class="product-grid" id="hot-products-grid">
+                <!-- 爆款商品会通过JavaScript动态添加到这里 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 分类页面 -->
+    <div class="category-page" id="category-page" style="display: none;">
+        <div class="detail-header">
+            <div class="detail-close" id="category-close">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="cart-title">商品分类</div>
+        </div>
+        
+        <div class="category-content">
+            <!-- 饮料分类 -->
+            <div class="category-section">
+                <div class="section-title">
+                    <i class="fas fa-wine-bottle" style="color: #4CAF50; margin-right: 8px;"></i>
+                    饮料饮品
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" data-category="drink-carbonated">
+                        <div class="category-icon" style="background-color: #FFE8D9;">
+                            <i class="fas fa-glass-cheers" style="color: #FF7B29;"></i>
+                        </div>
+                        <span class="category-name">碳酸饮料</span>
+                    </div>
+                    <div class="category-item" data-category="drink-juice">
+                        <div class="category-icon" style="background-color: #FFF3CD;">
+                            <i class="fas fa-apple-alt" style="color: #FFC107;"></i>
+                        </div>
+                        <span class="category-name">果汁饮品</span>
+                    </div>
+                    <div class="category-item" data-category="drink-tea">
+                        <div class="category-icon" style="background-color: #D4EDDA;">
+                            <i class="fas fa-mug-hot" style="color: #28A745;"></i>
+                        </div>
+                        <span class="category-name">茶饮系列</span>
+                    </div>
+                    <div class="category-item" data-category="drink-coffee">
+                        <div class="category-icon" style="background-color: #F8F9FA;">
+                            <i class="fas fa-coffee" style="color: #6F4E37;"></i>
+                        </div>
+                        <span class="category-name">咖啡饮品</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 零食分类 -->
+            <div class="category-section">
+                <div class="section-title">
+                    <i class="fas fa-cookie-bite" style="color: #FF9800; margin-right: 8px;"></i>
+                    休闲零食
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" data-category="snack-chips">
+                        <div class="category-icon" style="background-color: #FFF3E0;">
+                            <i class="fas fa-potato-chip" style="color: #FF9800;"></i>
+                        </div>
+                        <span class="category-name">薯片虾条</span>
+                    </div>
+                    <div class="category-item" data-category="snack-chocolate">
+                        <div class="category-icon" style="background-color: #F3E5F5;">
+                            <i class="fas fa-candy-cane" style="color: #9C27B0;"></i>
+                        </div>
+                        <span class="category-name">巧克力糖果</span>
+                    </div>
+                    <div class="category-item" data-category="snack-nuts">
+                        <div class="category-icon" style="background-color: #FFF9C4;">
+                            <i class="fas fa-seedling" style="color: #8BC34A;"></i>
+                        </div>
+                        <span class="category-name">坚果炒货</span>
+                    </div>
+                    <div class="category-item" data-category="snack-biscuit">
+                        <div class="category-icon" style="background-color: #E8F5E9;">
+                            <i class="fas fa-cookie" style="color: #4CAF50;"></i>
+                        </div>
+                        <span class="category-name">饼干糕点</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 速食分类 -->
+            <div class="category-section">
+                <div class="section-title">
+                    <i class="fas fa-utensils" style="color: #F44336; margin-right: 8px;"></i>
+                    速食方便
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" data-category="instant-noodle">
+                        <div class="category-icon" style="background-color: #FFEBEE;">
+                            <i class="fas fa-bowl-rice" style="color: #F44336;"></i>
+                        </div>
+                        <span class="category-name">方便面</span>
+                    </div>
+                    <div class="category-item" data-category="instant-rice">
+                        <div class="category-icon" style="background-color: #E8EAF6;">
+                            <i class="fas fa-drumstick-bite" style="color: #3F51B5;"></i>
+                        </div>
+                        <span class="category-name">自热米饭</span>
+                    </div>
+                    <div class="category-item" data-category="instant-snack">
+                        <div class="category-icon" style="background-color: #FCE4EC;">
+                            <i class="fas fa-hotdog" style="color: #E91E63;"></i>
+                        </div>
+                        <span class="category-name">火腿肠</span>
+                    </div>
+                    <div class="category-item" data-category="instant-others">
+                        <div class="category-icon" style="background-color: #E0F2F1;">
+                            <i class="fas fa-bacon" style="color: #009688;"></i>
+                        </div>
+                        <span class="category-name">其他速食</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 美好系列分类 -->
+            <div class="category-section">
+                <div class="section-title">
+                    <i class="fas fa-star" style="color: #FFD700; margin-right: 8px;"></i>
+                    美好系列
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" data-category="meihao-ham">
+                        <div class="category-icon" style="background-color: #FFE8D9;">
+                            <i class="fas fa-hotdog" style="color: #FF7B29;"></i>
+                        </div>
+                        <span class="category-name">火腿肠</span>
+                    </div>
+                    <div class="category-item" data-category="meihao-hotdog">
+                        <div class="category-icon" style="background-color: #FFF3CD;">
+                            <i class="fas fa-sausage" style="color: #FFC107;"></i>
+                        </div>
+                        <span class="category-name">热狗肠</span>
+                    </div>
+                    <div class="category-item" data-category="meihao-luncheon">
+                        <div class="category-icon" style="background-color: #D4EDDA;">
+                            <i class="fas fa-drumstick-bite" style="color: #28A745;"></i>
+                        </div>
+                        <span class="category-name">午餐肉</span>
+                    </div>
+                    <div class="category-item" data-category="meihao-snack">
+                        <div class="category-icon" style="background-color: #E8F4FD;">
+                            <i class="fas fa-cookie-bite" style="color: #3F51B5;"></i>
+                        </div>
+                        <span class="category-name">休闲零食</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分类商品列表页面 -->
+    <div class="category-products-page" id="category-products-page" style="display: none;">
+        <div class="detail-header">
+            <div class="detail-close" id="products-back">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="cart-title" id="category-title">分类商品</div>
+        </div>
+        
+        <div class="category-products-content">
+            <!-- 这里会通过JavaScript动态加载商品 -->
+            <div class="product-grid" id="category-products-grid">
+                <!-- 商品会动态添加到这里 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 关于我们页面 -->
+    <div class="about-page" id="about-page" style="display: none;">
+        <div class="detail-header">
+            <div class="detail-close" id="about-close">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="cart-title">关于我们</div>
+        </div>
+        
+        <div class="about-content">
+            <!-- 公司简介 -->
+            <div class="about-section">
+                <div class="about-title">
+                    <i class="fas fa-store" style="color: #FF7B29; margin-right: 8px;"></i>
+                    公司简介
+                </div>
+                <div class="about-text">
+                    <span class="highlight-text">四川佳宇商贸配送中心</span>，专注于食品饮料、休闲零食的批发与品牌代理，是餐饮商家、社区超市及零售创业者的信赖之选。我们坚持以<span class="highlight-text">优势价格</span>为核心竞争力，凭借规模采购与高效供应链，为您提供极具市场竞争力的进货成本。同时，<span class="highlight-text">品质可靠</span>是我们绝不妥协的底线，所有产品均通过严格筛选，确保安全、新鲜、口感纯正。
+                </div>
+            </div>
+            
+            <!-- 服务特色 -->
+            <div class="about-section">
+                <div class="about-title">
+                    <i class="fas fa-star" style="color: #FFC107; margin-right: 8px;"></i>
+                    服务特色
+                </div>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #FFE8D9;">
+                            <i class="fas fa-boxes" style="color: #FF7B29;"></i>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-title">品类齐全</div>
+                            <div class="feature-desc">涵盖饮品、副食、网红零食、日用快消等，一站式满足您的采购需求。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #D4EDDA;">
+                            <i class="fas fa-truck" style="color: #28A745;"></i>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-title">配送高效</div>
+                            <div class="feature-desc">自建物流团队，响应迅速，支持<span class="highlight-text">成都及周边地区快速配送</span>，助力您库存无忧。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="background-color: #E8F4FD;">
+                            <i class="fas fa-headset" style="color: #3F51B5;"></i>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-title">服务专业</div>
+                            <div class="feature-desc">提供选品建议、促销支持与稳定的代理合作，成为您生意成长的后盾。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 联系我们 -->
+            <div class="about-section">
+                <div class="about-title">
+                    <i class="fas fa-map-marker-alt" style="color: #F44336; margin-right: 8px;"></i>
+                    联系我们
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon" style="color: #F44336;"></i>
+                        <div class="contact-content">
+                            <div class="contact-title">公司地址</div>
+                            <div class="contact-desc highlight-text">龙泉驿区成洛大道西博西南食品城餐饮区21-24号</div>
+                            <div class="contact-note">我们相信，一次现场的沟通，胜过千言在线。无论是建立长期合作，还是探寻新的商机，这里都为您敞开大门。欢迎您前来，看看货，谈谈生意。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon" style="color: #4CAF50;"></i>
+                        <div class="contact-content">
+                            <div class="contact-title">联系电话</div>
+                            <div class="contact-desc">
+                                <div class="phone-number highlight-text">13541145115</div>
+                                <div class="phone-number highlight-text">13666251503</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-handshake contact-icon" style="color: #9C27B0;"></i>
+                        <div class="contact-content">
+                            <div class="contact-title">合作邀请</div>
+                            <div class="contact-desc">选择佳宇，就是选择高性价比的稳定货源与省心专业的配送服务。欢迎随时联系，获取最新报价与产品目录，让我们助您轻松进货、放心销售！</div>
+                            <div class="contact-note highlight-text">我们已备好香茗与诚心，期待与您见面，携手共创双赢未来！</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 服务承诺 -->
+            <div class="about-section">
+                <div class="promise-box">
+                    <i class="fas fa-award promise-icon" style="color: #FF9800;"></i>
+                    <div class="promise-title">我们的承诺</div>
+                    <div class="promise-items">
+                        <div class="promise-item">
+                            <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                            <span>正品保证，假一赔十</span>
+                        </div>
+                        <div class="promise-item">
+                            <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                            <span>价格透明，无隐藏费用</span>
+                        </div>
+                        <div class="promise-item">
+                            <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                            <span>准时配送，超时补偿</span>
+                        </div>
+                        <div class="promise-item">
+                            <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                            <span>专业客服，快速响应</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部CTA -->
+            <div class="about-actions">
+                <button class="action-btn" id="contact-now" style="background-color: var(--primary); color: white;">
+                    <i class="fas fa-phone-alt"></i> 立即联系
+                </button>
+                <button class="action-btn" id="visit-store" style="background-color: var(--white); color: var(--primary); border: 1px solid var(--primary);">
+                    <i class="fas fa-map-marker-alt"></i> 导航到店
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- 商品详情页 -->
     <div class="product-detail" id="product-detail">
@@ -937,10 +1601,8 @@
             const cartSidebar = document.getElementById('cart-sidebar');
             const cartClose = document.getElementById('cart-close');
             const overlay = document.getElementById('overlay');
-            const productCards = document.querySelectorAll('.product-card');
             const productDetail = document.getElementById('product-detail');
             const detailClose = document.getElementById('detail-close');
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
             const cartCount = document.querySelector('.cart-count');
             const detailImg = document.getElementById('detail-img');
             const detailTitle = document.getElementById('detail-title');
@@ -956,7 +1618,44 @@
             const cartTotalPrice = document.getElementById('cart-total-price');
             const checkoutBtn = document.querySelector('.checkout-btn');
             
-            // 商品数据（确保与HTML中的商品对应）
+            // 分类功能新增DOM元素
+            const categoryPage = document.getElementById('category-page');
+            const categoryProductsPage = document.getElementById('category-products-page');
+            const categoryClose = document.getElementById('category-close');
+            const productsBack = document.getElementById('products-back');
+            const categoryTitle = document.getElementById('category-title');
+            const categoryProductsGrid = document.getElementById('category-products-grid');
+            const quickItems = document.querySelectorAll('.quick-item');
+            const bottomNavItems = document.querySelectorAll('.nav-item');
+            const categoryItems = document.querySelectorAll('.category-item');
+            
+            // 关于我们功能新增DOM元素
+            const aboutPage = document.getElementById('about-page');
+            const aboutClose = document.getElementById('about-close');
+            const contactNowBtn = document.getElementById('contact-now');
+            const visitStoreBtn = document.getElementById('visit-store');
+            
+            // 搜索功能新增DOM元素
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const searchResultsGrid = document.getElementById('search-results-grid');
+            const clearSearchBtn = document.getElementById('clear-search');
+            const mainProductGrid = document.getElementById('main-product-grid');
+            const flashSaleList = document.querySelector('.product-list');
+            const searchIcon = document.getElementById('search-icon');
+            const searchContainer = document.getElementById('search-container');
+            
+            // 爆款推荐页面新增DOM元素
+            const viewMoreHot = document.getElementById('view-more-hot');
+            const hotProductsPage = document.getElementById('hot-products-page');
+            const hotProductsClose = document.getElementById('hot-products-close');
+            const hotProductsGrid = document.getElementById('hot-products-grid');
+            
+            // 当前查看的商品详情
+            let currentProductId = null;
+            let currentQuantity = 1;
+            
+            // 商品数据 - 包含所有价格表中的产品
             const products = {
                 1: {
                     title: "可口可乐330ml*6瓶",
@@ -964,7 +1663,10 @@
                     originalPrice: "¥24.0",
                     image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     description: "经典可口可乐，330ml*6瓶装。冰镇后口感更佳，家庭聚会、朋友聚餐必备饮品。",
-                    category: "饮料"
+                    category: "饮料",
+                    tags: ["可口可乐", "可乐", "碳酸饮料", "饮料"],
+                    isHot: true,
+                    isFlash: true
                 },
                 2: {
                     title: "乐事薯片大礼包",
@@ -972,7 +1674,10 @@
                     originalPrice: "¥36.0",
                     image: "https://images.unsplash.com/photo-1567306301408-9b74779a11af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     description: "乐事薯片多种口味组合装，包含原味、烧烤味、黄瓜味、番茄味等。酥脆可口，休闲必备零食。",
-                    category: "零食"
+                    category: "零食",
+                    tags: ["乐事", "薯片", "零食", "膨化食品"],
+                    isHot: true,
+                    isFlash: true
                 },
                 3: {
                     title: "德芙巧克力分享装",
@@ -980,35 +1685,561 @@
                     originalPrice: "¥20.0",
                     image: "https://images.unsplash.com/photo-1602922960046-6f4d45b9a6d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     description: "德芙丝滑牛奶巧克力，小包装方便分享。甜蜜丝滑，随时随地享受美味。",
-                    category: "零食"
+                    category: "零食",
+                    tags: ["德芙", "巧克力", "糖果", "零食"],
+                    isHot: true,
+                    isFlash: true
                 },
+                // 美好系列产品 - 从价格表中提取
                 4: {
-                    title: "每日坚果混合果仁",
-                    price: "¥12.8",
-                    image: "https://images.unsplash.com/photo-1571575173700-afb9492e6a50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-                    description: "每日坚果混合装，包含核桃、杏仁、腰果等多种坚果。营养丰富，健康零食首选。",
-                    category: "零食"
+                    title: "美好火腿肠30G*10支*14袋",
+                    price: "¥115.0",
+                    originalPrice: "¥125.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火腿肠30g装，10支一袋，14袋一件。肉质鲜美，口感细腻，是早餐、零食的理想选择。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "速食", "肉类零食"],
+                    isHot: false,
+                    isFlash: false
                 },
                 5: {
-                    title: "奥利奥夹心饼干",
-                    price: "¥8.5",
-                    image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-                    description: "经典奥利奥夹心饼干，扭一扭、舔一舔、泡一泡，多种吃法，乐趣无穷。",
-                    category: "零食"
+                    title: "美好火腿肠40G*10支*10袋",
+                    price: "¥106.0",
+                    originalPrice: "¥116.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火腿肠40g装，10支一袋，10袋一件。精选优质肉类，口感醇厚，适合多种烹饪方式。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "速食", "肉类零食"],
+                    isHot: true,
+                    isFlash: false
                 },
                 6: {
-                    title: "香飘飘奶茶杯装",
-                    price: "¥6.5",
-                    image: "https://images.unsplash.com/photo-1600721391689-2564bb8055de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-                    description: "香飘飘经典奶茶，杯装方便冲泡。香浓丝滑，多种口味可选。",
-                    category: "饮料"
+                    title: "美好火腿肠56G*10支*8袋",
+                    price: "¥113.0",
+                    originalPrice: "¥123.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火腿肠56g装，10支一袋，8袋一件。份量十足，肉质饱满，适合家庭食用。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "速食", "肉类零食"],
+                    isHot: false,
+                    isFlash: false
                 },
                 7: {
-                    title: "梦龙冰淇淋组合",
+                    title: "美好火腿肠120G*40支",
+                    price: "¥118.0",
+                    originalPrice: "¥128.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火腿肠120g装，40支一件。大份量包装，经济实惠，适合餐饮店和家庭使用。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "速食", "肉类零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                8: {
+                    title: "美好火腿肠170G*30支",
+                    price: "¥118.0",
+                    originalPrice: "¥128.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火腿肠170g装，30支一件。精选优质原料，肉质细腻，口感丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "速食", "肉类零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                9: {
+                    title: "美好火腿肠260G*20支",
+                    price: "¥118.0",
+                    originalPrice: "¥128.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火腿肠260g装，20支一件。超大份量，适合餐饮业和大型家庭使用。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "速食", "肉类零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                10: {
+                    title: "美好玉米热狗肠32G*60支",
+                    price: "¥48.0",
+                    originalPrice: "¥58.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好玉米热狗肠，32g装，60支一件。玉米香味浓郁，口感独特，深受儿童喜爱。",
+                    category: "美好系列",
+                    tags: ["美好", "热狗肠", "玉米肠", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                11: {
+                    title: "美好香辣热狗肠32G*60支",
+                    price: "¥48.0",
+                    originalPrice: "¥58.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好香辣热狗肠，32g装，60支一件。香辣口味，开胃可口，适合喜欢辣味的人群。",
+                    category: "美好系列",
+                    tags: ["美好", "热狗肠", "香辣", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                12: {
+                    title: "美好泡椒热狗肠32G*60支",
+                    price: "¥48.0",
+                    originalPrice: "¥58.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好泡椒热狗肠，32g装，60支一件。泡椒风味，酸辣开胃，适合喜欢重口味的人群。",
+                    category: "美好系列",
+                    tags: ["美好", "热狗肠", "泡椒", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                13: {
+                    title: "美好鸡肉肠60G*50支",
+                    price: "¥41.0",
+                    originalPrice: "¥51.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好鸡肉肠，60g装，50支一件。选用优质鸡肉，低脂肪高蛋白，健康美味。",
+                    category: "美好系列",
+                    tags: ["美好", "鸡肉肠", "健康", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                14: {
+                    title: "美好甜玉米香肠50G*100支",
+                    price: "¥80.0",
+                    originalPrice: "¥90.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好甜玉米香肠，50g装，100支一件。甜玉米与肉香的完美结合，口感丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "玉米香肠", "甜味", "速食"],
+                    isHot: true,
+                    isFlash: false
+                },
+                15: {
+                    title: "美好泡面帮40G*100支",
+                    price: "¥81.0",
+                    originalPrice: "¥91.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好泡面帮火腿肠，40g装，100支一件。专为泡面搭配设计，提升泡面口感。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "泡面搭档", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                16: {
+                    title: "美好甜玉米90G*40支",
+                    price: "¥65.0",
+                    originalPrice: "¥75.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好甜玉米肠，90g装，40支一件。玉米颗粒饱满，口感清甜。",
+                    category: "美好系列",
+                    tags: ["美好", "玉米肠", "甜味", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                17: {
+                    title: "美好川肉王火腿肠85G*40支",
+                    price: "¥68.0",
+                    originalPrice: "¥78.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好川肉王火腿肠，85g装，40支一件。川味特色，麻辣鲜香，回味无穷。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "川味", "麻辣"],
+                    isHot: false,
+                    isFlash: false
+                },
+                18: {
+                    title: "美好泡面帮80G*40支",
+                    price: "¥65.0",
+                    originalPrice: "¥75.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好泡面帮火腿肠，80g装，40支一件。升级版泡面搭档，更大份量更满足。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "泡面搭档", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                19: {
+                    title: "美好鸡肉风味香肠110G*30支",
+                    price: "¥48.0",
+                    originalPrice: "¥58.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好鸡肉风味香肠，110g装，30支一件。鸡肉风味，口感细腻，营养丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "鸡肉肠", "风味", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                20: {
+                    title: "美好卤蛋35G*100个",
+                    price: "¥120.0",
+                    originalPrice: "¥130.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好卤蛋，35g装，100个一件。卤香浓郁，口感Q弹，即食方便。",
+                    category: "美好系列",
+                    tags: ["美好", "卤蛋", "即食", "蛋制品"],
+                    isHot: true,
+                    isFlash: false
+                },
+                21: {
+                    title: "美好玉米热狗肠60G*40支",
+                    price: "¥62.0",
+                    originalPrice: "¥72.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好玉米热狗肠，60g装，40支一件。升级版玉米肠，更大份量更满足。",
+                    category: "美好系列",
+                    tags: ["美好", "热狗肠", "玉米肠", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                22: {
+                    title: "美好香辣热狗肠60G*40支",
+                    price: "¥62.0",
+                    originalPrice: "¥72.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好香辣热狗肠，60g装，40支一件。升级版香辣肠，辣味更足更过瘾。",
+                    category: "美好系列",
+                    tags: ["美好", "热狗肠", "香辣", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                23: {
+                    title: "美好大食客火腿肠400G*10袋",
+                    price: "¥52.0",
+                    originalPrice: "¥62.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好大食客火腿肠，400g装，10袋一件。大份量包装，经济实惠。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "大份量", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                24: {
+                    title: "美好餐饮开花脆皮肠180G*20袋",
+                    price: "¥88.0",
+                    originalPrice: "¥98.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好餐饮开花脆皮肠，180g装，20袋一件。开花设计，口感脆爽，适合餐饮业。",
+                    category: "美好系列",
+                    tags: ["美好", "脆皮肠", "开花肠", "餐饮专用"],
+                    isHot: false,
+                    isFlash: false
+                },
+                25: {
+                    title: "美好开花肠210G*20袋",
+                    price: "¥100.0",
+                    originalPrice: "¥110.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好开花肠，210g装，20袋一件。开花设计，烹饪时开花美观，口感丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "开花肠", "脆皮肠", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                26: {
+                    title: "美好餐饮开花脆皮肠380G*14袋",
+                    price: "¥115.0",
+                    originalPrice: "¥125.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好餐饮开花脆皮肠，380g装，14袋一件。大份量餐饮专用，经济实惠。",
+                    category: "美好系列",
+                    tags: ["美好", "脆皮肠", "开花肠", "餐饮专用"],
+                    isHot: false,
+                    isFlash: false
+                },
+                27: {
+                    title: "美好脆皮肠400G*10袋",
+                    price: "¥87.0",
+                    originalPrice: "¥97.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好脆皮肠，400g装，10袋一件。外皮酥脆，内里鲜嫩，口感丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "脆皮肠", "速食", "肉制品"],
+                    isHot: false,
+                    isFlash: false
+                },
+                28: {
+                    title: "美好餐饮料理肠800G*10袋",
+                    price: "¥92.0",
+                    originalPrice: "¥102.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好餐饮料理肠，800g装，10袋一件。餐饮专用，适合各种料理烹饪。",
+                    category: "美好系列",
+                    tags: ["美好", "料理肠", "餐饮专用", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                29: {
+                    title: "美好优级王中王60G*10支*16袋",
+                    price: "¥240.0",
+                    originalPrice: "¥250.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好优级王中王火腿肠，60g装，10支一袋，16袋一件。精选优质原料，口感纯正。",
+                    category: "美好系列",
+                    tags: ["美好", "王中王", "火腿肠", "经典"],
+                    isHot: true,
+                    isFlash: false
+                },
+                30: {
+                    title: "美好午餐方腿380G*12个",
+                    price: "¥82.0",
+                    originalPrice: "¥92.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好午餐方腿，380g装，12个一件。方腿造型，方便切片，适合午餐搭配。",
+                    category: "美好系列",
+                    tags: ["美好", "午餐方腿", "方腿", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                31: {
+                    title: "美好王中王240G*18支",
+                    price: "¥100.0",
+                    originalPrice: "¥110.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好王中王火腿肠，240g装，18支一件。大份量王中王，满足感十足。",
+                    category: "美好系列",
+                    tags: ["美好", "王中王", "火腿肠", "经典"],
+                    isHot: true,
+                    isFlash: false
+                },
+                32: {
+                    title: "优质火腿肠160G*18支",
+                    price: "¥48.0",
+                    originalPrice: "¥58.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "优质火腿肠，160g装，18支一件。品质优良，口感细腻。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "优质", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                33: {
+                    title: "美好火锅午餐肉罐头340G*24罐",
+                    price: "¥220.0",
+                    originalPrice: "¥230.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火锅午餐肉罐头，340g装，24罐一件。肉质细腻，适合火锅、炒菜等多种食用方式。",
+                    category: "美好系列",
+                    tags: ["美好", "午餐肉", "罐头", "火锅"],
+                    isHot: true,
+                    isFlash: false
+                },
+                34: {
+                    title: "美好大肉花午餐肉340G*24罐",
+                    price: "¥200.0",
+                    originalPrice: "¥210.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好大肉花午餐肉，340g装，24罐一件。肉粒可见，口感丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "午餐肉", "罐头", "肉制品"],
+                    isHot: false,
+                    isFlash: false
+                },
+                35: {
+                    title: "美好小香肠80G*50袋",
+                    price: "¥7.0",
+                    originalPrice: "¥17.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好小香肠，80g装，50袋一件。小包装方便携带，随时享用。",
+                    category: "美好系列",
+                    tags: ["美好", "小香肠", "零食", "便携"],
+                    isHot: false,
+                    isFlash: false
+                },
+                36: {
+                    title: "美好小香肠150G*50袋",
+                    price: "¥6.0",
+                    originalPrice: "¥16.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好小香肠，150g装，50袋一件。经济实惠，适合家庭日常食用。",
+                    category: "美好系列",
+                    tags: ["美好", "小香肠", "零食", "经济装"],
+                    isHot: false,
+                    isFlash: false
+                },
+                37: {
+                    title: "美好广味小香肠80G*50袋",
+                    price: "¥6.0",
+                    originalPrice: "¥16.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好广味小香肠，80g装，50袋一件。广式风味，甜香可口。",
+                    category: "美好系列",
+                    tags: ["美好", "小香肠", "广味", "零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                38: {
+                    title: "美好川肉王50G*10支*10袋",
+                    price: "¥118.0",
+                    originalPrice: "¥128.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好川肉王火腿肠，50g装，10支一袋，10袋一件。川味特色，麻辣鲜香。",
+                    category: "美好系列",
+                    tags: ["美好", "川肉王", "火腿肠", "川味"],
+                    isHot: false,
+                    isFlash: false
+                },
+                39: {
+                    title: "美好牛肉风味火腿肠50G*40支",
                     price: "¥32.0",
-                    image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-                    description: "梦龙冰淇淋组合装，包含经典巧克力、白巧克力、双重脆层等多种口味。",
-                    category: "零食"
+                    originalPrice: "¥42.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好牛肉风味火腿肠，50g装，40支一件。牛肉风味，口感独特。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "牛肉风味", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                40: {
+                    title: "美好爆香小鱿鱼15G*20盒*20袋",
+                    price: "¥14.0",
+                    originalPrice: "¥24.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好爆香小鱿鱼，15g装，20盒一袋，20袋一件。海鲜风味，口感劲道。",
+                    category: "美好系列",
+                    tags: ["美好", "小鱿鱼", "海鲜", "零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                41: {
+                    title: "美好脆骨小肉肠香辣20G*16盒*20袋",
+                    price: "¥14.0",
+                    originalPrice: "¥24.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好脆骨小肉肠，香辣味，20g装，16盒一袋，20袋一件。带有脆骨，口感丰富。",
+                    category: "美好系列",
+                    tags: ["美好", "脆骨肠", "香辣", "零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                42: {
+                    title: "美好脆骨小肉肠原味20G*16盒*20袋",
+                    price: "¥14.0",
+                    originalPrice: "¥24.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好脆骨小肉肠，原味，20g装，16盒一袋，20袋一件。原汁原味，带有脆骨。",
+                    category: "美好系列",
+                    tags: ["美好", "脆骨肠", "原味", "零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                43: {
+                    title: "美好脆骨小肉肠孜然20G*16盒*20袋",
+                    price: "¥14.0",
+                    originalPrice: "¥24.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好脆骨小肉肠，孜然味，20g装，16盒一袋，20袋一件。孜然风味，香气扑鼻。",
+                    category: "美好系列",
+                    tags: ["美好", "脆骨肠", "孜然", "零食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                44: {
+                    title: "美好火锅素毛肚1KG*20盒*20袋",
+                    price: "¥14.0",
+                    originalPrice: "¥24.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好火锅素毛肚，1kg装，20盒一袋，20袋一件。素食选择，口感爽脆。",
+                    category: "美好系列",
+                    tags: ["美好", "素毛肚", "素食", "火锅"],
+                    isHot: false,
+                    isFlash: false
+                },
+                45: {
+                    title: "美好台湾风味烤香肠60G*10板*10个",
+                    price: "¥110.0",
+                    originalPrice: "¥120.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好台湾风味烤香肠，60g装，10板一袋，10袋一件。台湾风味，适合烧烤。",
+                    category: "美好系列",
+                    tags: ["美好", "烤香肠", "台湾风味", "烧烤"],
+                    isHot: false,
+                    isFlash: false
+                },
+                46: {
+                    title: "美好爆汁地道肉肠70G*20中袋*10支",
+                    price: "¥280.0",
+                    originalPrice: "¥290.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好爆汁地道肉肠，70g装，20中袋一袋，10支一件。爆汁口感，肉质鲜美。",
+                    category: "美好系列",
+                    tags: ["美好", "肉肠", "爆汁", "高端"],
+                    isHot: true,
+                    isFlash: false
+                },
+                47: {
+                    title: "美好农家经典烤肠70G*10*20袋",
+                    price: "¥300.0",
+                    originalPrice: "¥310.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好农家经典烤肠，70g装，10支一袋，20袋一件。农家风味，经典口感。",
+                    category: "美好系列",
+                    tags: ["美好", "烤肠", "农家风味", "经典"],
+                    isHot: false,
+                    isFlash: false
+                },
+                48: {
+                    title: "美好清卤肥肠1KG*10袋",
+                    price: "¥58.0",
+                    originalPrice: "¥68.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好清卤肥肠，1kg装，10袋一件。清卤工艺，肥而不腻。",
+                    category: "美好系列",
+                    tags: ["美好", "肥肠", "卤味", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                49: {
+                    title: "美好香卤冒节子1.25KG*4袋",
+                    price: "¥55.0",
+                    originalPrice: "¥65.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好香卤冒节子，1.25kg装，4袋一件。四川特色，卤香浓郁。",
+                    category: "美好系列",
+                    tags: ["美好", "冒节子", "卤味", "四川特色"],
+                    isHot: false,
+                    isFlash: false
+                },
+                50: {
+                    title: "美好甜心玉米香肠30G*8支*10袋",
+                    price: "¥60.0",
+                    originalPrice: "¥70.0",
+                    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好甜心玉米香肠，30g装，8支一袋，10袋一件。甜心口味，适合儿童。",
+                    category: "美好系列",
+                    tags: ["美好", "玉米香肠", "甜心", "儿童食品"],
+                    isHot: false,
+                    isFlash: false
+                },
+                51: {
+                    title: "美好烧烤风味火腿肠40G*10袋*10支",
+                    price: "¥88.0",
+                    originalPrice: "¥98.0",
+                    image: "https://images.unsplash.com/photo-1588362956629-f506b5a6f2c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好烧烤风味火腿肠，40g装，10袋一袋，10支一件。烧烤风味，香气扑鼻。",
+                    category: "美好系列",
+                    tags: ["美好", "火腿肠", "烧烤风味", "速食"],
+                    isHot: false,
+                    isFlash: false
+                },
+                52: {
+                    title: "美好农家小酥肉（猪肉）1KG*10袋",
+                    price: "¥360.0",
+                    originalPrice: "¥370.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好农家小酥肉，猪肉制作，1kg装，10袋一件。外酥里嫩，可直接食用或烹饪。",
+                    category: "美好系列",
+                    tags: ["美好", "小酥肉", "猪肉", "火锅配料"],
+                    isHot: true,
+                    isFlash: false
+                },
+                53: {
+                    title: "美好酥香小酥肉（鸡肉）1KG*10袋",
+                    price: "¥180.0",
+                    originalPrice: "¥190.0",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    description: "美好酥香小酥肉，鸡肉制作，1kg装，10袋一件。口感酥脆，香气扑鼻。",
+                    category: "美好系列",
+                    tags: ["美好", "小酥肉", "鸡肉", "速食"],
+                    isHot: false,
+                    isFlash: false
                 }
             };
 
@@ -1016,7 +2247,7 @@
             let cart = {
                 items: [
                     { id: 1, name: "可口可乐330ml*6瓶", price: 19.9, quantity: 2, image: products[1].image },
-                    { id: 2, name: "乐事薯片大礼包", price: 29.9, quantity: 1, image: products[2].image }
+                    { id: 5, name: "美好火腿肠40G*10支*10袋", price: 106.0, quantity: 1, image: products[5].image }
                 ],
                 getTotal() {
                     return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -1025,10 +2256,53 @@
                     return this.items.reduce((total, item) => total + item.quantity, 0);
                 }
             };
+            
+            // 分类数据
+            const productsByCategory = {
+                'drink-carbonated': [1],
+                'drink-juice': [],
+                'drink-tea': [],
+                'drink-coffee': [],
+                'snack-chips': [2],
+                'snack-chocolate': [3],
+                'snack-nuts': [],
+                'snack-biscuit': [],
+                'instant-noodle': [],
+                'instant-rice': [],
+                'instant-snack': [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 23, 27, 28, 29, 31, 32, 38, 39, 51],
+                'instant-others': [20, 33, 34, 48, 49, 52, 53],
+                'meihao-ham': [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 23, 27, 28, 29, 31, 32, 38, 39, 51],
+                'meihao-hotdog': [10, 11, 12, 21, 22, 45, 46, 47],
+                'meihao-luncheon': [24, 25, 26, 30, 33, 34],
+                'meihao-snack': [20, 35, 36, 37, 40, 41, 42, 43, 44, 48, 49, 50, 52, 53],
+                'drink': [1],
+                'snack': [2, 3],
+                'meihao': [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53],
+                'hot': [1, 2, 3, 5, 14, 20, 29, 31, 33, 46, 52]
+            };
 
-            // 当前查看的商品详情
-            let currentProductId = null;
-            let currentQuantity = 1;
+            const categoryNames = {
+                'drink-carbonated': '碳酸饮料',
+                'drink-juice': '果汁饮品',
+                'drink-tea': '茶饮系列',
+                'drink-coffee': '咖啡饮品',
+                'snack-chips': '薯片虾条',
+                'snack-chocolate': '巧克力糖果',
+                'snack-nuts': '坚果炒货',
+                'snack-biscuit': '饼干糕点',
+                'instant-noodle': '方便面',
+                'instant-rice': '自热米饭',
+                'instant-snack': '火腿肠',
+                'instant-others': '其他速食',
+                'meihao-ham': '美好火腿肠',
+                'meihao-hotdog': '美好热狗肠',
+                'meihao-luncheon': '美好午餐肉',
+                'meihao-snack': '美好休闲零食',
+                'drink': '饮料饮品',
+                'snack': '休闲零食',
+                'meihao': '美好系列',
+                'hot': '热销爆款'
+            };
 
             // 更新购物车显示
             function updateCartDisplay() {
@@ -1128,6 +2402,7 @@
                 
                 detailDescription.textContent = product.description;
                 productDetail.style.display = 'block';
+                productDetail.classList.add('page-enter');
                 document.body.style.overflow = 'hidden';
             }
 
@@ -1244,6 +2519,376 @@
                 // 每秒更新一次
                 setInterval(update, 1000);
             }
+            
+            // 搜索功能
+            function performSearch(searchTerm) {
+                if (!searchTerm.trim()) {
+                    showToast('请输入搜索关键词');
+                    return;
+                }
+                
+                searchTerm = searchTerm.toLowerCase().trim();
+                
+                // 隐藏主内容，显示搜索结果
+                mainProductGrid.style.display = 'none';
+                flashSaleList.style.display = 'none';
+                document.querySelector('.flash-sale').style.display = 'none';
+                document.querySelector('.section-header').style.display = 'none';
+                document.querySelector('.quick-access').style.display = 'none';
+                document.querySelector('.banner-container').style.display = 'none';
+                searchResults.style.display = 'block';
+                
+                // 清空搜索结果
+                searchResultsGrid.innerHTML = '';
+                
+                // 搜索商品
+                const matchingProducts = [];
+                
+                for (const productId in products) {
+                    const product = products[productId];
+                    const productTitle = product.title.toLowerCase();
+                    const productTags = product.tags || [];
+                    
+                    // 检查标题、分类、标签是否匹配
+                    if (productTitle.includes(searchTerm) || 
+                        product.category.includes(searchTerm) ||
+                        productTags.some(tag => tag.toLowerCase().includes(searchTerm))) {
+                        matchingProducts.push(productId);
+                    }
+                }
+                
+                // 显示搜索结果
+                if (matchingProducts.length > 0) {
+                    matchingProducts.forEach(productId => {
+                        const product = products[productId];
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.setAttribute('data-id', productId);
+                        
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.title}" class="product-img">
+                            <div class="product-info">
+                                <div class="product-name">${product.title}</div>
+                                <div class="product-price">${product.price}${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}</div>
+                                <button class="add-to-cart">
+                                    <i class="fas fa-cart-plus"></i> 加入购物车
+                                </button>
+                            </div>
+                        `;
+                        
+                        searchResultsGrid.appendChild(productCard);
+                    });
+                    
+                    // 绑定搜索结果商品的事件
+                    const newProductCards = searchResultsGrid.querySelectorAll('.product-card');
+                    newProductCards.forEach(card => {
+                        card.addEventListener('click', function() {
+                            const productId = parseInt(this.getAttribute('data-id'));
+                            openProductDetail(productId);
+                        });
+                    });
+                    
+                    // 绑定搜索结果的加入购物车按钮
+                    const newAddToCartBtns = searchResultsGrid.querySelectorAll('.add-to-cart');
+                    newAddToCartBtns.forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const productCard = this.closest('.product-card');
+                            const productId = parseInt(productCard.getAttribute('data-id'));
+                            addToCart(productId, 1);
+                        });
+                    });
+                    
+                    showToast(`找到 ${matchingProducts.length} 个相关商品`);
+                } else {
+                    // 没有搜索结果
+                    searchResultsGrid.innerHTML = `
+                        <div class="no-results" style="grid-column: 1 / -1;">
+                            <i class="fas fa-search"></i>
+                            <p>没有找到"${searchTerm}"相关商品</p>
+                            <p style="font-size: 12px; margin-top: 8px;">请尝试其他关键词</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            // 清除搜索
+            function clearSearch() {
+                searchInput.value = '';
+                searchResults.style.display = 'none';
+                mainProductGrid.style.display = 'grid';
+                flashSaleList.style.display = 'flex';
+                document.querySelector('.flash-sale').style.display = 'block';
+                document.querySelector('.section-header').style.display = 'flex';
+                document.querySelector('.quick-access').style.display = 'flex';
+                document.querySelector('.banner-container').style.display = 'block';
+            }
+            
+            // 分类功能函数
+            function openCategoryPage() {
+                categoryPage.style.display = 'block';
+                categoryPage.classList.add('page-enter');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeCategoryPage() {
+                categoryPage.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            function openCategoryProducts(categoryId) {
+                const categoryName = categoryNames[categoryId] || '分类商品';
+                categoryTitle.textContent = categoryName;
+                
+                // 清空现有商品
+                categoryProductsGrid.innerHTML = '';
+                
+                // 获取该分类的商品ID列表
+                const productIds = productsByCategory[categoryId] || [];
+                
+                // 如果有商品，显示商品
+                if (productIds.length > 0) {
+                    productIds.forEach(productId => {
+                        const product = products[productId];
+                        if (product) {
+                            const productCard = document.createElement('div');
+                            productCard.className = 'product-card';
+                            productCard.setAttribute('data-id', productId);
+                            
+                            productCard.innerHTML = `
+                                <img src="${product.image}" alt="${product.title}" class="product-img">
+                                <div class="product-info">
+                                    <div class="product-name">${product.title}</div>
+                                    <div class="product-price">${product.price}${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}</div>
+                                    <button class="add-to-cart">
+                                        <i class="fas fa-cart-plus"></i> 加入购物车
+                                    </button>
+                                </div>
+                            `;
+                            
+                            categoryProductsGrid.appendChild(productCard);
+                        }
+                    });
+                } else {
+                    // 如果没有商品，显示提示
+                    categoryProductsGrid.innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px; color: var(--gray); width: 100%;">
+                            <i class="fas fa-box-open" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+                            <p>暂无商品</p>
+                            <p style="font-size: 12px; margin-top: 8px;">正在努力上架中...</p>
+                        </div>
+                    `;
+                }
+                
+                // 绑定新商品的点击事件
+                const newProductCards = categoryProductsGrid.querySelectorAll('.product-card');
+                newProductCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        const productId = parseInt(this.getAttribute('data-id'));
+                        openProductDetail(productId);
+                        closeCategoryProductsPage();
+                    });
+                });
+                
+                // 绑定新商品的加入购物车按钮
+                const newAddToCartBtns = categoryProductsGrid.querySelectorAll('.add-to-cart');
+                newAddToCartBtns.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const productCard = this.closest('.product-card');
+                        const productId = parseInt(productCard.getAttribute('data-id'));
+                        addToCart(productId, 1);
+                    });
+                });
+                
+                // 显示分类商品页面
+                categoryProductsPage.style.display = 'block';
+                categoryProductsPage.classList.add('page-enter');
+            }
+
+            function closeCategoryProductsPage() {
+                categoryProductsPage.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // 关于我们功能函数
+            function openAboutPage() {
+                aboutPage.style.display = 'block';
+                aboutPage.classList.add('page-enter');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeAboutPage() {
+                aboutPage.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // 爆款推荐页面功能
+            function openHotProductsPage() {
+                hotProductsPage.style.display = 'block';
+                hotProductsPage.classList.add('page-enter');
+                document.body.style.overflow = 'hidden';
+                
+                // 清空现有商品
+                hotProductsGrid.innerHTML = '';
+                
+                // 获取所有爆款商品（isHot为true）
+                const hotProductIds = [];
+                for (const productId in products) {
+                    if (products[productId].isHot) {
+                        hotProductIds.push(productId);
+                    }
+                }
+                
+                // 显示爆款商品
+                if (hotProductIds.length > 0) {
+                    hotProductIds.forEach(productId => {
+                        const product = products[productId];
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.setAttribute('data-id', productId);
+                        
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.title}" class="product-img">
+                            <div class="product-info">
+                                <div class="product-name">${product.title}</div>
+                                <div class="product-price">${product.price}${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}</div>
+                                <button class="add-to-cart">
+                                    <i class="fas fa-cart-plus"></i> 加入购物车
+                                </button>
+                            </div>
+                        `;
+                        
+                        hotProductsGrid.appendChild(productCard);
+                    });
+                    
+                    // 绑定爆款商品的点击事件
+                    const newProductCards = hotProductsGrid.querySelectorAll('.product-card');
+                    newProductCards.forEach(card => {
+                        card.addEventListener('click', function() {
+                            const productId = parseInt(this.getAttribute('data-id'));
+                            openProductDetail(productId);
+                            closeHotProductsPage();
+                        });
+                    });
+                    
+                    // 绑定爆款商品的加入购物车按钮
+                    const newAddToCartBtns = hotProductsGrid.querySelectorAll('.add-to-cart');
+                    newAddToCartBtns.forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const productCard = this.closest('.product-card');
+                            const productId = parseInt(productCard.getAttribute('data-id'));
+                            addToCart(productId, 1);
+                        });
+                    });
+                } else {
+                    // 如果没有爆款商品，显示提示
+                    hotProductsGrid.innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px; color: var(--gray); width: 100%;">
+                            <i class="fas fa-fire" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+                            <p>暂无爆款商品</p>
+                            <p style="font-size: 12px; margin-top: 8px;">正在努力上架中...</p>
+                        </div>
+                    `;
+                }
+            }
+
+            function closeHotProductsPage() {
+                hotProductsPage.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // 初始化首页商品展示
+            function initializeHomeProducts() {
+                // 清空秒杀商品列表
+                flashSaleList.innerHTML = '';
+                
+                // 清空爆款推荐网格
+                mainProductGrid.innerHTML = '';
+                
+                // 获取秒杀商品（isFlash为true）
+                const flashProductIds = [];
+                for (const productId in products) {
+                    if (products[productId].isFlash) {
+                        flashProductIds.push(productId);
+                    }
+                }
+                
+                // 显示秒杀商品（最多3个）
+                flashProductIds.slice(0, 3).forEach(productId => {
+                    const product = products[productId];
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.setAttribute('data-id', productId);
+                    
+                    productCard.innerHTML = `
+                        <img src="${product.image}" alt="${product.title}" class="product-img">
+                        <div class="product-info">
+                            <div class="product-name">${product.title}</div>
+                            <div class="product-price">${product.price}${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> 加入购物车
+                            </button>
+                        </div>
+                    `;
+                    
+                    flashSaleList.appendChild(productCard);
+                });
+                
+                // 获取爆款商品（isHot为true，排除秒杀商品）
+                const hotProductIds = [];
+                for (const productId in products) {
+                    if (products[productId].isHot && !products[productId].isFlash) {
+                        hotProductIds.push(productId);
+                    }
+                }
+                
+                // 显示爆款商品（最多4个）
+                hotProductIds.slice(0, 4).forEach(productId => {
+                    const product = products[productId];
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.setAttribute('data-id', productId);
+                    
+                    productCard.innerHTML = `
+                        <img src="${product.image}" alt="${product.title}" class="product-img">
+                        <div class="product-info">
+                            <div class="product-name">${product.title}</div>
+                            <div class="product-price">${product.price}${product.originalPrice ? `<span class="original-price">${product.originalPrice}</span>` : ''}</div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> 加入购物车
+                            </button>
+                        </div>
+                    `;
+                    
+                    mainProductGrid.appendChild(productCard);
+                });
+                
+                // 绑定首页商品事件
+                bindProductEvents();
+            }
+            
+            // 绑定商品事件
+            function bindProductEvents() {
+                // 绑定所有商品卡片的点击事件
+                document.querySelectorAll('.product-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const productId = parseInt(this.getAttribute('data-id'));
+                        openProductDetail(productId);
+                    });
+                });
+                
+                // 绑定所有加入购物车按钮的事件
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const productCard = this.closest('.product-card');
+                        const productId = parseInt(productCard.getAttribute('data-id'));
+                        addToCart(productId, 1);
+                    });
+                });
+            }
 
             // 事件绑定
             cartIcon.addEventListener('click', openCart);
@@ -1252,14 +2897,10 @@
             overlay.addEventListener('click', function() {
                 closeCart();
                 closeProductDetail();
-            });
-
-            // 商品卡片点击事件
-            productCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    openProductDetail(productId);
-                });
+                closeCategoryPage();
+                closeCategoryProductsPage();
+                closeAboutPage();
+                closeHotProductsPage();
             });
 
             // 商品详情页的加入购物车按钮
@@ -1303,23 +2944,12 @@
                 });
             });
 
-            // 商品列表的加入购物车按钮
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.stopPropagation(); // 阻止事件冒泡，避免触发商品卡片点击
-                    const productCard = this.closest('.product-card');
-                    const productId = parseInt(productCard.getAttribute('data-id'));
-                    addToCart(productId, 1);
-                });
-            });
-
             // 结算按钮
             checkoutBtn.addEventListener('click', function() {
                 if (cart.items.length === 0) {
                     showToast('购物车为空，请先添加商品');
                 } else {
                     showToast('跳转到结算页面（模拟）');
-                    // 在实际应用中，这里会跳转到结算页面
                     setTimeout(() => {
                         closeCart();
                     }, 1000);
@@ -1327,27 +2957,125 @@
             });
 
             // 底部导航点击效果
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
+            bottomNavItems.forEach(item => {
                 item.addEventListener('click', function() {
+                    const page = this.getAttribute('data-page');
+                    
                     // 移除所有active类
-                    navItems.forEach(nav => nav.classList.remove('active'));
+                    bottomNavItems.forEach(nav => nav.classList.remove('active'));
                     // 添加当前active类
                     this.classList.add('active');
                     
-                    // 模拟页面切换效果
-                    const text = this.querySelector('span').textContent;
-                    if (text !== '首页') {
-                        showToast(`切换到${text}页面（模拟）`);
+                    // 隐藏所有页面
+                    closeCategoryPage();
+                    closeCategoryProductsPage();
+                    closeProductDetail();
+                    closeCart();
+                    closeAboutPage();
+                    closeHotProductsPage();
+                    clearSearch();
+                    
+                    if (page === 'category') {
+                        openCategoryPage();
+                    } else if (page === 'hot') {
+                        openHotProductsPage();
+                    } else if (page === 'about') {
+                        openAboutPage();
+                    } else if (page === 'home') {
+                        // 显示首页
+                        showToast('回到首页');
                     }
                 });
+            });
+            
+            // 快捷入口点击事件
+            quickItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category');
+                    
+                    if (categoryId === 'meihao') {
+                        // 打开美好系列分类页面
+                        openCategoryProducts('meihao');
+                    } else if (categoryId === 'hot') {
+                        // 打开热销页面
+                        openHotProductsPage();
+                    } else {
+                        // 其他分类打开分类页面
+                        openCategoryPage();
+                    }
+                });
+            });
+            
+            // 分类页面内部项目点击事件
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category');
+                    closeCategoryPage();
+                    openCategoryProducts(categoryId);
+                });
+            });
+            
+            // 分类页面关闭按钮
+            categoryClose.addEventListener('click', closeCategoryPage);
+            
+            // 分类商品页面返回按钮
+            productsBack.addEventListener('click', closeCategoryProductsPage);
+            
+            // 关于我们页面关闭按钮
+            aboutClose.addEventListener('click', closeAboutPage);
+            
+            // 爆款推荐页面关闭按钮
+            hotProductsClose.addEventListener('click', closeHotProductsPage);
+
+            // 立即联系按钮
+            contactNowBtn.addEventListener('click', function() {
+                showToast('拨打电话：13541145115（模拟）');
+                // 在实际应用中，这里可以调用电话功能
+                // window.location.href = 'tel:13541145115';
+            });
+
+            // 导航到店按钮
+            visitStoreBtn.addEventListener('click', function() {
+                showToast('打开地图导航到：龙泉驿区成洛大道西博西南食品城（模拟）');
+                // 在实际应用中，这里可以打开地图应用
+                // window.location.href = 'https://maps.app.goo.gl/...';
+            });
+
+            // 搜索功能事件绑定
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    const searchTerm = this.value.trim();
+                    if (searchTerm) {
+                        performSearch(searchTerm);
+                    }
+                }
+            });
+
+            // 搜索按钮点击事件
+            searchIcon.addEventListener('click', function() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    performSearch(searchTerm);
+                } else {
+                    showToast('请输入搜索关键词');
+                }
+            });
+
+            // 清除搜索按钮
+            clearSearchBtn.addEventListener('click', clearSearch);
+            
+            // 爆款推荐查看更多按钮点击事件
+            viewMoreHot.addEventListener('click', function() {
+                openHotProductsPage();
             });
 
             // 初始化
             updateCartDisplay();
             updateCountdown();
+            initializeHomeProducts();
             
-            console.log('零食口袋商城已初始化完成！');
+            console.log('佳宇商贸配送中心商城已初始化完成！');
+            console.log(`已添加 ${Object.keys(products).length} 个商品，包含完整的美好系列产品。`);
         });
     </script>
 </body>

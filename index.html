@@ -676,15 +676,6 @@
             display: none;
         }
         
-        /* 响应式调整 */
-        @media (min-width: 768px) {
-            body {
-                max-width: 480px;
-                margin: 0 auto;
-                border-left: 1px solid var(--border);
-                border-right: 1px solid var(--border);
-            }
-        }
         /* 分类页面样式 */
         .category-page {
             position: fixed;
@@ -1058,9 +1049,778 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
+        /* 结算页面样式 */
+        .checkout-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2004;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .checkout-content {
+            padding: 16px;
+            padding-top: 60px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* 结算页面标题 */
+        .checkout-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .checkout-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .checkout-close {
+            font-size: 20px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* 收货地址区域 */
+        .address-section {
+            background: linear-gradient(135deg, #FFE8D9 0%, #FFF3CD 100%);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid #FFD8B8;
+            cursor: pointer;
+        }
+        
+        .address-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .address-title {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .address-change {
+            color: var(--primary);
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .address-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .address-icon {
+            color: var(--primary);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+        
+        .address-text {
+            flex: 1;
+            color: var(--dark);
+        }
+        
+        .address-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+        
+        .address-phone {
+            color: var(--gray);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        
+        .address-full {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        /* 商品清单区域 */
+        .order-section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        .order-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .order-item {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .order-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .order-item-info {
+            flex: 1;
+        }
+        
+        .order-item-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .order-item-spec {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+        
+        .order-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .order-item-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .order-item-quantity {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* 支付方式区域 */
+        .payment-section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .payment-option.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .alipay-icon {
+            background-color: #00A1E9;
+        }
+        
+        .wechat-icon {
+            background-color: #09BB07;
+        }
+        
+        .payment-info {
+            flex: 1;
+        }
+        
+        .payment-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .payment-desc {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        .payment-check {
+            color: var(--primary);
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .payment-option.selected .payment-check {
+            opacity: 1;
+        }
+        
+        /* 二维码区域 */
+        .qrcode-section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+        }
+        
+        .qrcode-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .qrcode-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        
+        .qrcode-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+        
+        .qrcode-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .alipay-logo {
+            color: #00A1E9;
+            font-size: 24px;
+        }
+        
+        .wechat-logo {
+            color: #09BB07;
+            font-size: 24px;
+        }
+        
+        .qrcode-desc {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+        
+        .qrcode-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .qrcode-timer {
+            font-size: 14px;
+            color: #F44336;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        
+        /* 订单金额摘要 */
+        .summary-section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .summary-item.total {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+        }
+        
+        .summary-label {
+            color: var(--gray);
+        }
+        
+        .summary-value {
+            font-weight: 500;
+        }
+        
+        /* 底部操作区域 */
+        .checkout-footer {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 16px;
+            border-top: 1px solid var(--border);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+            z-index: 5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .checkout-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .checkout-total {
+            flex: 1;
+        }
+        
+        .total-label {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 2px;
+        }
+        
+        .total-amount {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .pay-button {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF9C29 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 28px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(255, 123, 41, 0.3);
+            transition: all 0.2s;
+        }
+        
+        .pay-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 6px rgba(255, 123, 41, 0.3);
+        }
+        
+        .pay-button.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        /* 支付成功页面 */
+        .success-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            z-index: 2005;
+            overflow-y: auto;
+            display: none;
+            text-align: center;
+        }
+        
+        .success-content {
+            padding: 40px 16px;
+            padding-top: 80px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 48px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .success-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+        
+        .success-desc {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        
+        .success-btn {
+            flex: 1;
+            padding: 14px 0;
+            border-radius: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        .view-order {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+        
+        .back-home {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .page-enter {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .qrcode-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* 响应式调整 */
+        @media (min-width: 768px) {
+            body {
+                max-width: 480px;
+                margin: 0 auto;
+                border-left: 1px solid var(--border);
+                border-right: 1px solid var(--border);
+            }
+            .checkout-page, .checkout-header, .checkout-footer, .success-page {
+                max-width: 480px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-left: 1px solid var(--border);
+                border-right: 1px solid var(--border);
+            }
+        }
+        /* ========== 欢迎动画样式 ========== */
+.welcome-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FFE8D9 0%, #FFF3CD 50%, #FFD8B8 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sun-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    opacity: 0.7;
+}
+
+.ray {
+    position: absolute;
+    width: 2px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, #FFD700, transparent);
+    transform-origin: bottom center;
+}
+
+.welcome-item {
+    position: absolute;
+    font-size: 36px;
+    opacity: 0;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.welcome-text {
+    text-align: center;
+    margin-bottom: 60px;
+    z-index: 2;
+}
+
+.welcome-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: #FF5722;
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.welcome-subtitle {
+    font-size: 20px;
+    color: #666;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.progress-container {
+    width: 280px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 40px;
+    z-index: 2;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #FF9800, #FF5722);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.enter-btn {
+    margin-top: 40px;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #FF9800, #FF5722);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+    transition: all 0.3s ease;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.enter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 87, 34, 0.5);
+}
+
+.enter-btn:active {
+    transform: translateY(0);
+}
+
+.main-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.main-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.welcome-container.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+}
+
+/* 动画关键帧 */
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes rayRotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 32px;
+    }
+    
+    .welcome-subtitle {
+        font-size: 16px;
+    }
+    
+    .welcome-item {
+        font-size: 28px;
+    }
+}
+/* ========== 欢迎动画样式结束 ========== */
     </style>
 </head>
 <body>
+    <!-- 欢迎动画层 -->
+<div class="welcome-container" id="welcome-container">
+    <div class="sun-rays" id="sun-rays">
+        <!-- 阳光射线将由JavaScript动态生成 -->
+    </div>
+    
+    <!-- 零食饮料元素 -->
+    <div class="welcome-item" style="top: 20%; left: 10%; color: #FF5722;">
+        <i class="fas fa-wine-bottle"></i>
+    </div>
+    <div class="welcome-item" style="top: 15%; right: 15%; color: #4CAF50;">
+        <i class="fas fa-apple-alt"></i>
+    </div>
+    <div class="welcome-item" style="bottom: 25%; left: 15%; color: #9C27B0;">
+        <i class="fas fa-cookie-bite"></i>
+    </div>
+    <div class="welcome-item" style="bottom: 20%; right: 10%; color: #FF9800;">
+        <i class="fas fa-ice-cream"></i>
+    </div>
+    <div class="welcome-item" style="top: 30%; left: 20%; color: #F44336;">
+        <i class="fas fa-hotdog"></i>
+    </div>
+    <div class="welcome-item" style="top: 25%; right: 25%; color: #00BCD4;">
+        <i class="fas fa-mug-hot"></i>
+    </div>
+    <div class="welcome-item" style="bottom: 30%; left: 25%; color: #FFC107;">
+        <i class="fas fa-candy-cane"></i>
+    </div>
+    <div class="welcome-item" style="bottom: 35%; right: 20%; color: #E91E63;">
+        <i class="fas fa-cookie"></i>
+    </div>
+    
+    <!-- 欢迎文字 -->
+    <div class="welcome-text">
+        <h1 class="welcome-title">四川佳宇商贸配送中心</h1>
+        <p class="welcome-subtitle">专业食品饮料批发配送 · 开启美味之旅</p>
+    </div>
+    
+    <!-- 加载进度条 -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- 进入按钮 -->
+    <button class="enter-btn" id="enter-btn">
+        <i class="fas fa-shopping-bag"></i> 立即进入
+    </button>
+</div>
+<div class="main-content" id="main-content" style="opacity: 0;"></div>
     <!-- 顶部导航 -->
     <header class="header">
         <div class="logo">
@@ -1213,39 +1973,45 @@
         </div>
         
         <div class="category-content">
-            <!-- 饮料分类 -->
-            <div class="category-section">
-                <div class="section-title">
-                    <i class="fas fa-wine-bottle" style="color: #4CAF50; margin-right: 8px;"></i>
-                    饮料饮品
-                </div>
-                <div class="category-grid">
-                    <div class="category-item" data-category="drink-carbonated">
-                        <div class="category-icon" style="background-color: #FFE8D9;">
-                            <i class="fas fa-glass-cheers" style="color: #FF7B29;"></i>
-                        </div>
-                        <span class="category-name">碳酸饮料</span>
-                    </div>
-                    <div class="category-item" data-category="drink-juice">
-                        <div class="category-icon" style="background-color: #FFF3CD;">
-                            <i class="fas fa-apple-alt" style="color: #FFC107;"></i>
-                        </div>
-                        <span class="category-name">果汁饮品</span>
-                    </div>
-                    <div class="category-item" data-category="drink-tea">
-                        <div class="category-icon" style="background-color: #D4EDDA;">
-                            <i class="fas fa-mug-hot" style="color: #28A745;"></i>
-                        </div>
-                        <span class="category-name">茶饮系列</span>
-                    </div>
-                    <div class="category-item" data-category="drink-coffee">
-                        <div class="category-icon" style="background-color: #F8F9FA;">
-                            <i class="fas fa-coffee" style="color: #6F4E37;"></i>
-                        </div>
-                        <span class="category-name">咖啡饮品</span>
-                    </div>
-                </div>
+           <!-- 饮料分类 -->
+<div class="category-section">
+    <div class="section-title">
+        <i class="fas fa-wine-bottle" style="color: #4CAF50; margin-right: 8px;"></i>
+        饮料饮品
+    </div>
+    <div class="category-grid">
+        <div class="category-item" data-category="drink-carbonated">
+            <div class="category-icon" style="background-color: #E8F5E9;">
+                <i class="fas fa-glass-cheers" style="color: #4CAF50;"></i>
             </div>
+            <span class="category-name">碳酸饮料</span>
+        </div>
+        <div class="category-item" data-category="drink-kangshifu">
+            <div class="category-icon" style="background-color: #FFEBEE;">
+                <i class="fas fa-wine-bottle" style="color: #F44336;"></i>
+            </div>
+            <span class="category-name">康师傅饮料</span>
+        </div>
+        <div class="category-item" data-category="drink-tongyi">
+            <div class="category-icon" style="background-color: #FFF9C4;">
+                <i class="fas fa-mug-hot" style="color: #FFC107;"></i>
+            </div>
+            <span class="category-name">统一饮料</span>
+        </div>
+        <div class="category-item" data-category="drink-wahaha-nongfu">
+            <div class="category-icon" style="background-color: #E3F2FD;">
+                <i class="fas fa-tint" style="color: #2196F3;"></i>
+            </div>
+            <span class="category-name">娃哈哈与农夫</span>
+        </div>
+        <div class="category-item" data-category="drink-other">
+            <div class="category-icon" style="background-color: #F5F5F5;">
+                <i class="fas fa-glass-whiskey" style="color: #757575;"></i>
+            </div>
+            <span class="category-name">其他饮料</span>
+        </div>
+    </div>
+</div>
             
             <!-- 零食分类 -->
             <div class="category-section">
@@ -1504,8 +2270,192 @@
         </div>
     </div>
 
+    <!-- 结算页面 -->
+    <div class="checkout-page" id="checkout-page" style="display: none;">
+        <div class="checkout-header">
+            <div class="checkout-close" id="checkout-close">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="checkout-title">订单结算</div>
+            <div></div> <!-- 占位元素，使标题居中 -->
+        </div>
+        
+        <div class="checkout-content">
+            <!-- 收货地址 -->
+            <div class="address-section" id="address-section">
+                <div class="address-header">
+                    <div class="address-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        收货地址
+                    </div>
+                    <div class="address-change">修改</div>
+                </div>
+                <div class="address-detail">
+                    <div class="address-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="address-text">
+                        <div class="address-name">张先生</div>
+                        <div class="address-phone">138****5678</div>
+                        <div class="address-full">四川省成都市龙泉驿区成洛大道西博西南食品城餐饮区21-24号</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品清单 -->
+            <div class="order-section">
+                <div class="section-title">
+                    <i class="fas fa-box" style="color: var(--primary); margin-right: 8px;"></i>
+                    商品清单
+                </div>
+                <div class="order-items" id="order-items">
+                    <!-- 订单商品会通过JavaScript动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 支付方式 -->
+            <div class="payment-section">
+                <div class="section-title">
+                    <i class="fas fa-credit-card" style="color: var(--primary); margin-right: 8px;"></i>
+                    支付方式
+                </div>
+                <div class="payment-options">
+                    <div class="payment-option selected" data-payment="alipay">
+                        <div class="payment-icon alipay-icon">
+                            <i class="fab fa-alipay"></i>
+                        </div>
+                        <div class="payment-info">
+                            <div class="payment-name">支付宝支付</div>
+                            <div class="payment-desc">推荐使用支付宝，安全快捷</div>
+                        </div>
+                        <div class="payment-check">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-option" data-payment="wechat">
+                        <div class="payment-icon wechat-icon">
+                            <i class="fab fa-weixin"></i>
+                        </div>
+                        <div class="payment-info">
+                            <div class="payment-name">微信支付</div>
+                            <div class="payment-desc">推荐使用微信支付，方便快捷</div>
+                        </div>
+                        <div class="payment-check">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 支付宝二维码区域 -->
+            <div class="qrcode-section" id="alipay-qrcode">
+                <div class="qrcode-title">支付宝扫码支付</div>
+                <div class="qrcode-container">
+                    <img src="00.jpg" alt="支付宝付款二维码" class="qrcode-img qrcode-pulse">
+                    <div class="qrcode-logo alipay-logo">
+                        <i class="fab fa-alipay"></i>
+                    </div>
+                </div>
+                <div class="qrcode-desc">打开支付宝扫一扫，扫描上方二维码完成支付</div>
+                <div class="qrcode-amount" id="alipay-amount">¥289.80</div>
+                <div class="qrcode-timer" id="alipay-timer">支付剩余时间：14:58</div>
+            </div>
+            
+            <!-- 微信二维码区域 -->
+            <div class="qrcode-section" id="wechat-qrcode">
+                <div class="qrcode-title">微信扫码支付</div>
+                <div class="qrcode-container">
+                    <img src="77.jpg" alt="微信付款二维码" class="qrcode-img qrcode-pulse">
+                    <div class="qrcode-logo wechat-logo">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                </div>
+                <div class="qrcode-desc">打开微信扫一扫，扫描上方二维码完成支付</div>
+                <div class="qrcode-amount" id="wechat-amount">¥289.80</div>
+                <div class="qrcode-timer" id="wechat-timer">支付剩余时间：14:58</div>
+            </div>
+            
+            <!-- 订单金额摘要 -->
+            <div class="summary-section">
+                <div class="section-title">
+                    <i class="fas fa-receipt" style="color: var(--primary); margin-right: 8px;"></i>
+                    订单摘要
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">商品总额</span>
+                    <span class="summary-value" id="subtotal">¥289.80</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">配送费</span>
+                    <span class="summary-value">¥0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">优惠抵扣</span>
+                    <span class="summary-value">-¥10.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span class="summary-label">实付金额</span>
+                    <span class="summary-value" id="total-amount">¥279.80</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部操作区域 -->
+        <div class="checkout-footer">
+            <div class="checkout-actions">
+                <div class="checkout-total">
+                    <div class="total-label">合计：</div>
+                    <div class="total-amount" id="footer-total">¥279.80</div>
+                </div>
+                <button class="pay-button" id="show-qrcode">
+                    <i class="fas fa-qrcode"></i>
+                    显示付款码
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 支付成功页面 -->
+    <div class="success-page" id="success-page" style="display: none;">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1 class="success-title">支付成功！</h1>
+            <p class="success-desc">订单已支付成功，我们将尽快为您安排配送<br>订单号：<strong>JY20230615001</strong></p>
+            
+            <div class="order-section" style="margin-top: 32px;">
+                <div class="section-title" style="text-align: left;">
+                    订单信息
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">支付方式</span>
+                    <span class="summary-value" id="success-payment-method">支付宝支付</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">支付时间</span>
+                    <span class="summary-value" id="success-payment-time">2023-06-15 14:30:25</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">实付金额</span>
+                    <span class="summary-value" style="color: var(--primary); font-weight: bold;">¥279.80</span>
+                </div>
+            </div>
+            
+            <div class="success-actions">
+                <button class="success-btn view-order" id="view-order">
+                    <i class="fas fa-file-alt"></i> 查看订单
+                </button>
+                <button class="success-btn back-home" id="back-home">
+                    <i class="fas fa-home"></i> 返回首页
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- 商品详情页 -->
-    <div class="product-detail" id="product-detail">
+    <div class="product-detail" id="product-detail" style="display: none;">
         <div class="detail-header">
             <div class="detail-close" id="detail-close">
                 <i class="fas fa-times"></i>
@@ -1587,7 +2537,7 @@
                 <span>合计：</span>
                 <span id="cart-total-price">¥0.00</span>
             </div>
-            <button class="checkout-btn">去结算</button>
+            <button class="checkout-btn" id="go-to-checkout">去结算</button>
         </div>
     </div>
 
@@ -1596,6 +2546,113 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // ========== 欢迎动画控制代码 ==========
+// 获取欢迎动画相关DOM元素
+const welcomeContainer = document.getElementById('welcome-container');
+const welcomeItems = document.querySelectorAll('.welcome-item');
+const welcomeTitle = document.querySelector('.welcome-title');
+const welcomeSubtitle = document.querySelector('.welcome-subtitle');
+const progressBar = document.getElementById('progress-bar');
+const enterBtn = document.getElementById('enter-btn');
+const mainContent = document.getElementById('main-content');
+const sunRays = document.getElementById('sun-rays');
+
+// 创建阳光射线
+function createSunRays() {
+    const rayCount = 12;
+    for (let i = 0; i < rayCount; i++) {
+        const ray = document.createElement('div');
+        ray.className = 'ray';
+        ray.style.transform = `rotate(${i * (360 / rayCount)}deg)`;
+        ray.style.animation = `rayRotation 20s linear infinite`;
+        sunRays.appendChild(ray);
+    }
+}
+
+// 初始化欢迎动画
+function initWelcomeAnimation() {
+    // 创建阳光射线
+    createSunRays();
+    
+    // 延迟后开始动画
+    setTimeout(() => {
+        // 阳光射线动画
+        sunRays.style.width = '400px';
+        sunRays.style.height = '400px';
+        sunRays.style.transition = 'width 1.5s ease, height 1.5s ease';
+        
+        // 零食饮料元素飞入动画
+        welcomeItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                // 为不同元素分配不同的动画
+                if (index % 3 === 0) {
+                    item.style.animation = 'float 3s ease-in-out infinite';
+                } else if (index % 3 === 1) {
+                    item.style.animation = 'bounce 2s ease-in-out infinite';
+                } else {
+                    item.style.animation = 'pulse 2.5s ease-in-out infinite';
+                }
+                item.style.transform = 'translateY(0)';
+            }, index * 150);
+        });
+        
+        // 文字淡入动画
+        setTimeout(() => {
+            welcomeTitle.style.animation = 'fadeInUp 1s ease forwards';
+            welcomeTitle.style.opacity = '1';
+            welcomeTitle.style.transform = 'translateY(0)';
+        }, 800);
+        
+        setTimeout(() => {
+            welcomeSubtitle.style.animation = 'fadeInUp 1s ease forwards';
+            welcomeSubtitle.style.opacity = '1';
+            welcomeSubtitle.style.transform = 'translateY(0)';
+        }, 1200);
+        
+        // 进度条加载动画
+        setTimeout(() => {
+            progressBar.style.width = '100%';
+            progressBar.style.transition = 'width 2s ease';
+        }, 1500);
+        
+        // 显示进入按钮
+        setTimeout(() => {
+            enterBtn.style.animation = 'fadeInUp 0.8s ease forwards';
+            enterBtn.style.opacity = '1';
+            enterBtn.style.transform = 'translateY(0)';
+        }, 2500);
+    }, 500);
+}
+
+// 进入主界面
+function enterMainInterface() {
+    // 隐藏欢迎动画层
+    welcomeContainer.classList.add('hide');
+    
+    // 显示主内容
+    setTimeout(() => {
+        mainContent.classList.add('show');
+        // 移除欢迎动画层（可选）
+        setTimeout(() => {
+            welcomeContainer.style.display = 'none';
+        }, 800);
+    }, 300);
+}
+
+// 自动进入（10秒后自动进入）
+setTimeout(() => {
+    if (!welcomeContainer.classList.contains('hide')) {
+        enterMainInterface();
+    }
+}, 10000);
+
+// 点击进入按钮
+enterBtn.addEventListener('click', enterMainInterface);
+
+// 初始化欢迎动画
+initWelcomeAnimation();
+// ========== 欢迎动画控制代码结束 ==========
             // 获取DOM元素
             const cartIcon = document.getElementById('cart-icon');
             const cartSidebar = document.getElementById('cart-sidebar');
@@ -1616,7 +2673,7 @@
             const flavorOptions = document.querySelectorAll('.flavor-option');
             const cartItemsContainer = document.querySelector('.cart-items');
             const cartTotalPrice = document.getElementById('cart-total-price');
-            const checkoutBtn = document.querySelector('.checkout-btn');
+            const checkoutBtn = document.getElementById('go-to-checkout');
             
             // 分类功能新增DOM元素
             const categoryPage = document.getElementById('category-page');
@@ -1651,9 +2708,42 @@
             const hotProductsClose = document.getElementById('hot-products-close');
             const hotProductsGrid = document.getElementById('hot-products-grid');
             
+            // 结算页面相关DOM元素
+            const checkoutPage = document.getElementById('checkout-page');
+            const checkoutClose = document.getElementById('checkout-close');
+            const orderItemsContainer = document.getElementById('order-items');
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const alipayQrcode = document.getElementById('alipay-qrcode');
+            const wechatQrcode = document.getElementById('wechat-qrcode');
+            const alipayAmount = document.getElementById('alipay-amount');
+            const wechatAmount = document.getElementById('wechat-amount');
+            const alipayTimer = document.getElementById('alipay-timer');
+            const wechatTimer = document.getElementById('wechat-timer');
+            const subtotalElement = document.getElementById('subtotal');
+            const totalAmountElement = document.getElementById('total-amount');
+            const footerTotalElement = document.getElementById('footer-total');
+            const showQrcodeBtn = document.getElementById('show-qrcode');
+            const addressSection = document.getElementById('address-section');
+            
+            // 支付成功页面相关DOM元素
+            const successPage = document.getElementById('success-page');
+            const successPaymentMethod = document.getElementById('success-payment-method');
+            const successPaymentTime = document.getElementById('success-payment-time');
+            const viewOrderBtn = document.getElementById('view-order');
+            const backHomeBtn = document.getElementById('back-home');
+            
             // 当前查看的商品详情
             let currentProductId = null;
             let currentQuantity = 1;
+            
+            // 当前支付方式
+            let currentPayment = 'alipay';
+            // 支付倒计时
+            let paymentTimer = 15 * 60; // 15分钟
+            let timerInterval;
+            
+            // 二维码是否可见
+            let qrcodeVisible = false;
             
             // 商品数据 - 包含所有价格表中的产品
             const products = {
@@ -2240,14 +3330,1173 @@
                     tags: ["美好", "小酥肉", "鸡肉", "速食"],
                     isHot: false,
                     isFlash: false
-                }
-            };
+                },
+                // 在现有products对象中添加康师傅饮料（从第54个产品开始）
+54: {
+    title: "康师傅冰红茶1L*12",
+    price: "¥40.0", // 卖价
+    originalPrice: "¥50.0", // 原价（比卖价高10元）
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅冰红茶，1L*12瓶装。经典红茶口味，冰镇后口感更佳，家庭聚会、朋友聚餐必备饮品。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "冰红茶", "茶饮", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+55: {
+    title: "康师傅蜜茶1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅蜜茶，1L*12瓶装。蜂蜜与茶的完美结合，清甜不腻，自然健康。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "蜜茶", "蜂蜜茶", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+56: {
+    title: "康师傅绿茶1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅绿茶，1L*12瓶装。清新绿茶口味，解渴消暑，适合日常饮用。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "绿茶", "茶饮", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+57: {
+    title: "康师傅清茶1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅清茶，1L*12瓶装。淡雅清茶，口感清新，适合喜欢清淡茶饮的人群。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "清茶", "茶饮", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+58: {
+    title: "康师傅冰糖雪梨1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅冰糖雪梨，1L*12瓶装。冰糖与雪梨的经典搭配，润肺止咳，清甜可口。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "冰糖雪梨", "梨汁", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+59: {
+    title: "康师傅金桔柠檬1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅金桔柠檬，1L*12瓶装。金桔与柠檬的清新组合，酸甜可口，富含维C。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "金桔柠檬", "果味饮料", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+60: {
+    title: "康师傅蜜桃乌龙茶1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅蜜桃乌龙茶，1L*12瓶装。蜜桃的香甜与乌龙的醇厚完美结合，口感丰富。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "蜜桃乌龙", "茶饮", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+61: {
+    title: "康师傅小酪多多1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅小酪多多，1L*12瓶装。乳酸菌饮料，口感酸甜，有助于消化。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "小酪多多", "乳酸菌", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+62: {
+    title: "康师傅水晶葡萄1L*12瓶",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅水晶葡萄，1L*12瓶装。葡萄果汁饮料，口感清甜，葡萄味浓郁。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "水晶葡萄", "葡萄汁", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+63: {
+    title: "康师傅水蜜桃1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅水蜜桃，1L*12瓶装。水蜜桃果汁饮料，口感甜美，桃香浓郁。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "水蜜桃", "桃汁", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+64: {
+    title: "康师傅热带风味1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅热带风味，1L*12瓶装。混合热带水果口味，口感丰富，充满异域风情。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "热带风味", "混合果汁", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+65: {
+    title: "康师傅茉莉花/柚茶1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅茉莉花/柚茶，1L*12瓶装。茉莉花香与柚子酸甜的完美结合，清新怡人。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "茉莉花茶", "柚茶", "茶饮"],
+    isHot: false,
+    isFlash: false
+},
+66: {
+    title: "康师傅蜂蜜柚子1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅蜂蜜柚子，1L*12瓶装。蜂蜜的甜润与柚子的清香，口感温和，营养丰富。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "蜂蜜柚子", "果茶", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+67: {
+    title: "康师傅酸梅汤1L*12",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅酸梅汤，1L*12瓶装。传统酸梅汤口味，酸甜可口，消暑解渴。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "酸梅汤", "传统饮料", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+68: {
+    title: "康师傅绿茶500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅绿茶，500ml*15瓶装。便携装绿茶，随时随地享受清新茶香。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "绿茶", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+69: {
+    title: "康师傅清茶500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅清茶，500ml*15瓶装。淡雅清茶，口感清新，适合日常饮用。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "清茶", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+70: {
+    title: "康师傅冰糖雪梨500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅冰糖雪梨，500ml*15瓶装。冰糖雪梨便携装，润肺止咳，清甜可口。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "冰糖雪梨", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+71: {
+    title: "康师傅冰红茶500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅冰红茶，500ml*15瓶装。经典冰红茶便携装，随时随地享受红茶美味。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "冰红茶", "便携装", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+72: {
+    title: "康师傅蜂蜜柚子500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅蜂蜜柚子，500ml*15瓶装。蜂蜜柚子茶便携装，温和滋养，口感香甜。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "蜂蜜柚子", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+73: {
+    title: "康师傅水晶葡萄500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅水晶葡萄，500ml*15瓶装。葡萄汁便携装，清甜可口，葡萄味浓郁。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "水晶葡萄", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+74: {
+    title: "康师傅金桔柠檬500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅金桔柠檬，500ml*15瓶装。金桔柠檬便携装，酸甜可口，富含维C。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "金桔柠檬", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+75: {
+    title: "康师傅茉莉柚茶500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅茉莉柚茶，500ml*15瓶装。茉莉花香与柚子酸甜的便携装组合。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "茉莉柚茶", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+76: {
+    title: "康师傅酸梅汤500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅酸梅汤，500ml*15瓶装。传统酸梅汤便携装，消暑解渴。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "酸梅汤", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+77: {
+    title: "康师傅水蜜桃500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅水蜜桃，500ml*15瓶装。水蜜桃果汁便携装，口感甜美，桃香浓郁。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "水蜜桃", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+78: {
+    title: "康师傅蜜茶500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅蜜茶，500ml*15瓶装。蜂蜜茶便携装，清甜不腻，自然健康。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "蜜茶", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+79: {
+    title: "康师傅小酪多多500ML*15",
+    price: "¥34.0",
+    originalPrice: "¥44.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅小酪多多，500ml*15瓶装。乳酸菌饮料便携装，有助于消化。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "小酪多多", "便携装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+80: {
+    title: "康师傅水550ML*24",
+    price: "¥16.0",
+    originalPrice: "¥26.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅饮用水，550ml*24瓶装。纯净饮用水，适合日常饮用。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "饮用水", "矿泉水", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+81: {
+    title: "康师傅水1.5L*8",
+    price: "¥12.0",
+    originalPrice: "¥22.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅饮用水，1.5L*8瓶装。大瓶装纯净水，适合家庭饮用。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "饮用水", "大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+82: {
+    title: "康师傅冰红茶2L*6",
+    price: "¥38.0",
+    originalPrice: "¥48.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "康师傅冰红茶，2L*6瓶装。大瓶装冰红茶，适合家庭聚会或分享饮用。",
+    category: "康师傅饮料",
+    tags: ["康师傅", "冰红茶", "大瓶装", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+// 在现有products对象中添加统一饮料（从第83个产品开始）
+83: {
+    title: "统一冰红茶500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一冰红茶，500ml*15瓶装。经典红茶口味，冰镇后口感更佳，便携包装方便携带。",
+    category: "统一饮料",
+    tags: ["统一", "冰红茶", "茶饮", "饮料", "便携装"],
+    isHot: true,
+    isFlash: false
+},
+84: {
+    title: "统一蜜茶500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一蜜茶，500ml*15瓶装。蜂蜜与茶的完美结合，清甜不腻，自然健康。",
+    category: "统一饮料",
+    tags: ["统一", "蜜茶", "蜂蜜茶", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+85: {
+    title: "统一绿茶500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一绿茶，500ml*15瓶装。清新绿茶口味，解渴消暑，适合日常饮用。",
+    category: "统一饮料",
+    tags: ["统一", "绿茶", "茶饮", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+86: {
+    title: "统一金桔柠檬500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一金桔柠檬，500ml*15瓶装。金桔与柠檬的清新组合，酸甜可口，富含维C。",
+    category: "统一饮料",
+    tags: ["统一", "金桔柠檬", "果味饮料", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+87: {
+    title: "统一青梅绿茶500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一青梅绿茶，500ml*15瓶装。青梅的酸甜与绿茶的清香完美结合，口感独特。",
+    category: "统一饮料",
+    tags: ["统一", "青梅绿茶", "果茶", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+88: {
+    title: "统一水晶葡萄500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一水晶葡萄，500ml*15瓶装。葡萄果汁饮料，口感清甜，葡萄味浓郁。",
+    category: "统一饮料",
+    tags: ["统一", "水晶葡萄", "葡萄汁", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+89: {
+    title: "统一双萃鸭屎香500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一双萃鸭屎香，500ml*15瓶装。独特鸭屎香茶底，双重萃取工艺，茶香浓郁。",
+    category: "统一饮料",
+    tags: ["统一", "双萃鸭屎香", "茶饮", "饮料", "便携装"],
+    isHot: true,
+    isFlash: false
+},
+90: {
+    title: "统一冰糖雪梨500ML*15",
+    price: "¥30.0",
+    originalPrice: "¥40.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一冰糖雪梨，500ml*15瓶装。冰糖与雪梨的经典搭配，润肺止咳，清甜可口。",
+    category: "统一饮料",
+    tags: ["统一", "冰糖雪梨", "梨汁", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+91: {
+    title: "统一冰红茶1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一冰红茶，1L*8瓶装。大瓶装冰红茶，适合家庭分享或聚会饮用。",
+    category: "统一饮料",
+    tags: ["统一", "冰红茶", "茶饮", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+92: {
+    title: "统一蜜茶1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一蜜茶，1L*8瓶装。大瓶装蜂蜜茶，清甜不腻，适合家庭饮用。",
+    category: "统一饮料",
+    tags: ["统一", "蜜茶", "蜂蜜茶", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+93: {
+    title: "统一绿茶1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一绿茶，1L*8瓶装。大瓶装绿茶，清新解渴，适合家庭日常饮用。",
+    category: "统一饮料",
+    tags: ["统一", "绿茶", "茶饮", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+94: {
+    title: "统一冰糖雪梨1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一冰糖雪梨，1L*8瓶装。大瓶装冰糖雪梨，润肺止咳，清甜可口。",
+    category: "统一饮料",
+    tags: ["统一", "冰糖雪梨", "梨汁", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+95: {
+    title: "统一金桔柠檬1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一金桔柠檬，1L*8瓶装。大瓶装金桔柠檬，酸甜可口，富含维C。",
+    category: "统一饮料",
+    tags: ["统一", "金桔柠檬", "果味饮料", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+96: {
+    title: "统一双萃鸭屎香柠檬茶1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一双萃鸭屎香柠檬茶，1L*8瓶装。鸭屎香茶底搭配柠檬，口感清新独特。",
+    category: "统一饮料",
+    tags: ["统一", "双萃鸭屎香", "柠檬茶", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+97: {
+    title: "统一水晶葡萄1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一水晶葡萄，1L*8瓶装。大瓶装葡萄汁，口感清甜，葡萄味浓郁。",
+    category: "统一饮料",
+    tags: ["统一", "水晶葡萄", "葡萄汁", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+98: {
+    title: "统一青梅绿茶1L*8",
+    price: "¥24.0",
+    originalPrice: "¥34.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一青梅绿茶，1L*8瓶装。大瓶装青梅绿茶，青梅的酸甜与绿茶的清香完美结合。",
+    category: "统一饮料",
+    tags: ["统一", "青梅绿茶", "果茶", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+99: {
+    title: "统一鲜澄多2L*6",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一鲜澄多，2L*6瓶装。超大瓶装橙汁饮料，富含维C，口感酸甜。",
+    category: "统一饮料",
+    tags: ["统一", "鲜澄多", "橙汁", "饮料", "超大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+100: {
+    title: "阿萨姆500ML*15",
+    price: "¥45.0",
+    originalPrice: "¥55.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "阿萨姆奶茶，500ml*15瓶装。经典奶茶口味，奶香浓郁，茶味醇厚。",
+    category: "统一饮料",
+    tags: ["统一", "阿萨姆", "奶茶", "饮料", "便携装"],
+    isHot: true,
+    isFlash: false
+},
+101: {
+    title: "阿萨姆1.5L*6",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "阿萨姆奶茶，1.5L*6瓶装。大瓶装奶茶，奶香浓郁，茶味醇厚，适合分享。",
+    category: "统一饮料",
+    tags: ["统一", "阿萨姆", "奶茶", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+102: {
+    title: "统一鲜橙多1.5L*6",
+    price: "¥33.0",
+    originalPrice: "¥43.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一鲜橙多，1.5L*6瓶装。橙汁饮料，富含维C，口感酸甜爽口。",
+    category: "统一饮料",
+    tags: ["统一", "鲜橙多", "橙汁", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+103: {
+    title: "统一鲜橙多450ML*15",
+    price: "¥35.0",
+    originalPrice: "¥45.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "统一鲜橙多，450ml*15瓶装。橙汁饮料，富含维C，便携包装方便携带。",
+    category: "统一饮料",
+    tags: ["统一", "鲜橙多", "橙汁", "饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+104: {
+    title: "海之言500ML*15",
+    price: "¥44.0",
+    originalPrice: "¥54.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "海之言，500ml*15瓶装。海盐柠檬口味，清爽解渴，补充电解质。",
+    category: "统一饮料",
+    tags: ["统一", "海之言", "海盐饮料", "饮料", "便携装"],
+    isHot: true,
+    isFlash: false
+},
+105: {
+    title: "海之言1L*8",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "海之言，1L*8瓶装。大瓶装海盐柠檬饮料，清爽解渴，适合家庭饮用。",
+    category: "统一饮料",
+    tags: ["统一", "海之言", "海盐饮料", "饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+// 在现有products对象中添加碳酸饮料（从第106个产品开始）
+106: {
+    title: "拉罐可乐330ML*4包*6罐",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "可口可乐拉罐装，330ml*4包*6罐。便携罐装，适合外出携带，经典可口可乐口味。",
+    category: "碳酸饮料",
+    tags: ["可口可乐", "可乐", "碳酸饮料", "拉罐装", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+107: {
+    title: "可口可乐500ML*24",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "可口可乐，500ml*24瓶装。经典可口可乐口味，家庭装实惠包装。",
+    category: "碳酸饮料",
+    tags: ["可口可乐", "可乐", "碳酸饮料", "瓶装", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+108: {
+    title: "雪碧500ML*24",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "雪碧，500ml*24瓶装。柠檬味碳酸饮料，清爽解渴，家庭装实惠包装。",
+    category: "碳酸饮料",
+    tags: ["雪碧", "柠檬味", "碳酸饮料", "瓶装", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+109: {
+    title: "可口可乐888ML*12",
+    price: "¥38.0",
+    originalPrice: "¥48.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "可口可乐，888ml*12瓶装。大瓶装可口可乐，适合家庭分享饮用。",
+    category: "碳酸饮料",
+    tags: ["可口可乐", "可乐", "碳酸饮料", "大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+110: {
+    title: "雪碧888ML*12",
+    price: "¥38.0",
+    originalPrice: "¥48.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "雪碧，888ml*12瓶装。大瓶装雪碧，柠檬味清爽，适合家庭分享饮用。",
+    category: "碳酸饮料",
+    tags: ["雪碧", "柠檬味", "碳酸饮料", "大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+111: {
+    title: "零度888ML*12",
+    price: "¥38.0",
+    originalPrice: "¥48.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "零度可口可乐，888ml*12瓶装。无糖零卡路里，大瓶装适合健康饮食人群。",
+    category: "碳酸饮料",
+    tags: ["可口可乐", "零度", "无糖", "碳酸饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+112: {
+    title: "拉罐雪碧330ML*24",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "雪碧拉罐装，330ml*24罐。便携罐装雪碧，柠檬味清爽，适合外出携带。",
+    category: "碳酸饮料",
+    tags: ["雪碧", "柠檬味", "碳酸饮料", "拉罐装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+113: {
+    title: "大雪碧2L*8",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "雪碧，2L*8瓶装。超大瓶装雪碧，适合大型聚会或家庭饮用。",
+    category: "碳酸饮料",
+    tags: ["雪碧", "柠檬味", "碳酸饮料", "超大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+114: {
+    title: "大可口可乐2L*8",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "可口可乐，2L*8瓶装。超大瓶装可口可乐，适合大型聚会或家庭饮用。",
+    category: "碳酸饮料",
+    tags: ["可口可乐", "可乐", "碳酸饮料", "超大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+115: {
+    title: "可口可乐无糖2L*8",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "可口可乐无糖，2L*8瓶装。无糖零卡路里，超大瓶装适合健康饮食人群。",
+    category: "碳酸饮料",
+    tags: ["可口可乐", "无糖", "零卡", "碳酸饮料", "超大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+116: {
+    title: "中芬达500ML*12",
+    price: "¥27.0",
+    originalPrice: "¥37.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "芬达，500ml*12瓶装。橙味碳酸饮料，口感酸甜，适合日常饮用。",
+    category: "碳酸饮料",
+    tags: ["芬达", "橙味", "碳酸饮料", "瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+117: {
+    title: "芬达500ML*24(橙）",
+    price: "¥55.0",
+    originalPrice: "¥65.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "芬达橙味，500ml*24瓶装。家庭装橙味碳酸饮料，口感酸甜爽口。",
+    category: "碳酸饮料",
+    tags: ["芬达", "橙味", "碳酸饮料", "瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+118: {
+    title: "低拉罐百事330ML*6罐*4包(1*24)",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "百事可乐低糖拉罐装，330ml*6罐*4包。低糖版本，便携罐装，适合外出携带。",
+    category: "碳酸饮料",
+    tags: ["百事可乐", "低糖", "碳酸饮料", "拉罐装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+119: {
+    title: "百事可乐500ml*24",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "百事可乐，500ml*24瓶装。经典百事可乐口味，家庭装实惠包装。",
+    category: "碳酸饮料",
+    tags: ["百事可乐", "可乐", "碳酸饮料", "瓶装", "饮料"],
+    isHot: true,
+    isFlash: false
+},
+120: {
+    title: "百事可乐900ML*12",
+    price: "¥38.0",
+    originalPrice: "¥48.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "百事可乐，900ml*12瓶装。大瓶装百事可乐，适合家庭分享饮用。",
+    category: "碳酸饮料",
+    tags: ["百事可乐", "可乐", "碳酸饮料", "大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+121: {
+    title: "百事可乐2L*8",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "百事可乐，2L*8瓶装。超大瓶装百事可乐，适合大型聚会或家庭饮用。",
+    category: "碳酸饮料",
+    tags: ["百事可乐", "可乐", "碳酸饮料", "超大瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+122: {
+    title: "拉罐低美年达330ml*24",
+    price: "¥40.0",
+    originalPrice: "¥50.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "美年达低糖拉罐装，330ml*24罐。低糖版本，多种水果口味，便携罐装。",
+    category: "碳酸饮料",
+    tags: ["美年达", "低糖", "碳酸饮料", "拉罐装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+123: {
+    title: "百事可乐无糖1L*12",
+    price: "¥38.0",
+    originalPrice: "¥48.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "百事可乐无糖，1L*12瓶装。无糖零卡路里，大瓶装适合健康饮食人群。",
+    category: "碳酸饮料",
+    tags: ["百事可乐", "无糖", "零卡", "碳酸饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+124: {
+    title: "百事可乐无糖2L*8",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    description: "百事可乐无糖，2L*8瓶装。无糖零卡路里，超大瓶装适合健康饮食人群。",
+    category: "碳酸饮料",
+    tags: ["百事可乐", "无糖", "零卡", "碳酸饮料", "超大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+125: {
+    title: "美年达550ML*12",
+    price: "¥27.0",
+    originalPrice: "¥37.0",
+    image: "https://images.unsplash.com/photo-1579639904763-2e5e95c6678a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "美年达，550ml*12瓶装。多种水果口味碳酸饮料，口感清爽，色彩缤纷。",
+    category: "碳酸饮料",
+    tags: ["美年达", "果味", "碳酸饮料", "瓶装", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+// 在现有products对象后添加娃哈哈与农夫饮料
+126: {
+    title: "娃哈哈苏打水350ML*24瓶",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈苏打水，350ml*24瓶装。清爽口感，健康苏打水。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "苏打水", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+127: {
+    title: "娃哈哈苏打水500ML*15",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈苏打水，500ml*15瓶装。清爽口感，健康苏打水。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "苏打水", "饮料"],
+    isHot: false,
+    isFlash: false
+},
+128: {
+    title: "娃哈哈营养快线450*15",
+    price: "¥45.0",
+    originalPrice: "¥55.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈营养快线，450ml*15瓶装。营养丰富，口感顺滑。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "营养快线", "乳饮料"],
+    isHot: false,
+    isFlash: false
+},
+129: {
+    title: "娃哈哈营养快线1.5L*6",
+    price: "¥53.0",
+    originalPrice: "¥63.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈营养快线，1.5L*6瓶装。大瓶装营养快线，经济实惠。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "营养快线", "乳饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+130: {
+    title: "娃哈哈饮用纯净水1.5*12",
+    price: "¥26.0",
+    originalPrice: "¥36.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈饮用纯净水，1.5L*12瓶装。纯净水源，安全健康。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "纯净水", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+131: {
+    title: "娃哈哈饮用纯净水5.5L*4",
+    price: "¥29.0",
+    originalPrice: "¥39.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈饮用纯净水，5.5L*4桶装。大容量纯净水，适合家庭使用。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "纯净水", "桶装水", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+132: {
+    title: "娃哈哈饮用纯净水596ML*24瓶(1*2提*12瓶）",
+    price: "¥23.0",
+    originalPrice: "¥33.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈饮用纯净水，596ml*24瓶装。便携装纯净水，方便携带。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "纯净水", "便携装", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+133: {
+    title: "娃哈哈AD钙220G*24",
+    price: "¥32.0",
+    originalPrice: "¥42.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈AD钙奶，220g*24瓶装。经典AD钙奶，童年回忆。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "AD钙奶", "乳饮料", "经典"],
+    isHot: true,
+    isFlash: false
+},
+134: {
+    title: "娃哈哈大AD钙450ml*15瓶",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈大AD钙奶，450ml*15瓶装。大瓶装AD钙奶，口感醇厚。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "AD钙奶", "乳饮料", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+135: {
+    title: "娃哈哈大爽歪歪200G*4盒*6板",
+    price: "¥39.0",
+    originalPrice: "¥49.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈大爽歪歪，200g*4盒*6板装。儿童乳饮料，营养美味。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "爽歪歪", "乳饮料", "儿童饮料"],
+    isHot: false,
+    isFlash: false
+},
+136: {
+    title: "娃哈哈八宝粥360g*12罐",
+    price: "¥36.0",
+    originalPrice: "¥46.0",
+    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈八宝粥，360g*12罐装。营养八宝粥，方便快捷。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "八宝粥", "即食", "粥类"],
+    isHot: false,
+    isFlash: false
+},
+137: {
+    title: "娃哈哈纯净水12L",
+    price: "¥16.0",
+    originalPrice: "¥26.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "娃哈哈纯净水，12L桶装。大桶纯净水，适合家庭或办公使用。",
+    category: "娃哈哈与农夫",
+    tags: ["娃哈哈", "纯净水", "桶装水", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+138: {
+    title: "农夫山泉1.5L*12",
+    price: "¥25.0",
+    originalPrice: "¥35.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉，1.5L*12瓶装。天然水源，口感清甜。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "矿泉水", "饮用水"],
+    isHot: true,
+    isFlash: false
+},
+139: {
+    title: "农夫山泉550ML*24",
+    price: "¥22.0",
+    originalPrice: "¥32.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉，550ml*24瓶装。便携装矿泉水，方便携带。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "矿泉水", "便携装", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+140: {
+    title: "农夫5L*4",
+    price: "¥28.0",
+    originalPrice: "¥38.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉，5L*4桶装。大容量矿泉水，适合家庭使用。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "矿泉水", "大容量", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+141: {
+    title: "农夫山泉12.9L",
+    price: "¥16.0",
+    originalPrice: "¥26.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉，12.9L桶装。超大桶矿泉水，适合办公或家庭使用。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "矿泉水", "桶装水", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+142: {
+    title: "大茶π900ML*12",
+    price: "¥60.0",
+    originalPrice: "¥70.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉茶π，900ml*12瓶装。果味茶饮料，口感清新。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "茶π", "茶饮料", "果茶"],
+    isHot: true,
+    isFlash: false
+},
+143: {
+    title: "大东方树叶900ML*12",
+    price: "¥62.0",
+    originalPrice: "¥72.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉东方树叶，900ml*12瓶装。无糖茶饮料，健康选择。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "东方树叶", "茶饮料", "无糖"],
+    isHot: false,
+    isFlash: false
+},
+144: {
+    title: "茶π500ML*15",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉茶π，500ml*15瓶装。果味茶饮料，便携装。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "茶π", "茶饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+145: {
+    title: "东方树叶500ML*15",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉东方树叶，500ml*15瓶装。无糖茶饮料，便携装。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "东方树叶", "茶饮料", "无糖", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+146: {
+    title: "水溶C100 445ML15",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "农夫山泉水溶C100，445ml*15瓶装。维生素C饮料，酸甜可口。",
+    category: "娃哈哈与农夫",
+    tags: ["农夫山泉", "水溶C100", "维生素饮料", "果汁"],
+    isHot: false,
+    isFlash: false
+},
+147: {
+    title: "拉罐王老吉310ML*24",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1591338997207-9d4d53ad1f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "王老吉凉茶，310ml*24罐装。清凉去火，经典凉茶。",
+    category: "其他饮料",
+    tags: ["王老吉", "凉茶", "罐装"],
+    isHot: false,
+    isFlash: false
+},
+148: {
+    title: "大王老吉1.5L*6",
+    price: "¥45.0",
+    originalPrice: "¥55.0",
+    image: "https://images.unsplash.com/photo-1591338997207-9d4d53ad1f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "王老吉凉茶，1.5L*6瓶装。大瓶装凉茶，适合家庭分享。",
+    category: "其他饮料",
+    tags: ["王老吉", "凉茶", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+149: {
+    title: "王老吉中瓶500ML*15",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1591338997207-9d4d53ad1f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "王老吉凉茶，500ml*15瓶装。中瓶装凉茶，方便饮用。",
+    category: "其他饮料",
+    tags: ["王老吉", "凉茶", "中瓶装"],
+    isHot: false,
+    isFlash: false
+},
+150: {
+    title: "加多宝拉罐凉茶310ML*24",
+    price: "¥52.0",
+    originalPrice: "¥62.0",
+    image: "https://images.unsplash.com/photo-1591338997207-9d4d53ad1f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "加多宝凉茶，310ml*24罐装。正宗凉茶，降火解渴。",
+    category: "其他饮料",
+    tags: ["加多宝", "凉茶", "罐装"],
+    isHot: false,
+    isFlash: false
+},
+151: {
+    title: "加多宝500ML*16瓶",
+    price: "¥45.0",
+    originalPrice: "¥55.0",
+    image: "https://images.unsplash.com/photo-1591338997207-9d4d53ad1f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "加多宝凉茶，500ml*16瓶装。瓶装凉茶，便携饮用。",
+    category: "其他饮料",
+    tags: ["加多宝", "凉茶", "瓶装"],
+    isHot: false,
+    isFlash: false
+},
+152: {
+    title: "加多宝1.5L*6",
+    price: "¥45.0",
+    originalPrice: "¥55.0",
+    image: "https://images.unsplash.com/photo-1591338997207-9d4d53ad1f8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "加多宝凉茶，1.5L*6瓶装。家庭大瓶装，经济实惠。",
+    category: "其他饮料",
+    tags: ["加多宝", "凉茶", "大瓶装"],
+    isHot: false,
+    isFlash: false
+},
+153: {
+    title: "大百岁山570ML*24",
+    price: "¥42.0",
+    originalPrice: "¥52.0",
+    image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "百岁山矿泉水，570ml*24瓶装。天然矿泉水，品质保证。",
+    category: "其他饮料",
+    tags: ["百岁山", "矿泉水", "饮用水"],
+    isHot: false,
+    isFlash: false
+},
+154: {
+    title: "大东鹏特饮500ML*24",
+    price: "¥90.0",
+    originalPrice: "¥100.0",
+    image: "https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "东鹏特饮功能饮料，500ml*24瓶装。提神抗疲劳，补充能量。",
+    category: "其他饮料",
+    tags: ["东鹏特饮", "功能饮料", "能量饮料"],
+    isHot: true,
+    isFlash: false
+},
+155: {
+    title: "东鹏补水啦1L*12瓶",
+    price: "¥55.0",
+    originalPrice: "¥65.0",
+    image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "东鹏补水啦电解质水，1L*12瓶装。快速补水，补充电解质。",
+    category: "其他饮料",
+    tags: ["东鹏", "电解质水", "运动饮料"],
+    isHot: false,
+    isFlash: false
+},
+156: {
+    title: "东鹏补水啦555ML*24",
+    price: "¥65.0",
+    originalPrice: "¥75.0",
+    image: "https://images.unsplash.com/photo-1523362628745-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "东鹏补水啦电解质水，555ml*24瓶装。便携装电解质水，适合运动饮用。",
+    category: "其他饮料",
+    tags: ["东鹏", "电解质水", "运动饮料", "便携装"],
+    isHot: false,
+    isFlash: false
+},
+157: {
+    title: "东鹏果之茶1L*12瓶",
+    price: "¥46.0",
+    originalPrice: "¥56.0",
+    image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "东鹏果之茶，1L*12瓶装。果味茶饮料，清新口感。",
+    category: "其他饮料",
+    tags: ["东鹏", "果之茶", "茶饮料", "果茶"],
+    isHot: false,
+    isFlash: false
+},
+158: {
+    title: "东鹏大咖生椰拿铁500ML*15",
+    price: "¥85.0",
+    originalPrice: "¥95.0",
+    image: "https://images.unsplash.com/photo-1570965863106-8e7a2b2a7b1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    description: "东鹏大咖生椰拿铁，500ml*15瓶装。咖啡饮料，椰香拿铁风味。",
+    category: "其他饮料",
+    tags: ["东鹏", "大咖", "咖啡饮料", "生椰拿铁"],
+    isHot: false,
+    isFlash: false
+}
+
+           };
 
             // 购物车数据
             let cart = {
                 items: [
-                    { id: 1, name: "可口可乐330ml*6瓶", price: 19.9, quantity: 2, image: products[1].image },
-                    { id: 5, name: "美好火腿肠40G*10支*10袋", price: 106.0, quantity: 1, image: products[5].image }
+                    
                 ],
                 getTotal() {
                     return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -2259,10 +4508,11 @@
             
             // 分类数据
             const productsByCategory = {
-                'drink-carbonated': [1],
-                'drink-juice': [],
-                'drink-tea': [],
-                'drink-coffee': [],
+                'drink-carbonated': [1, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125],
+                'drink-kangshifu': [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82],
+                'drink-tongyi': [83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105],
+                 'drink-wahaha-nongfu': [126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146],
+                'drink-other': [147,148,149,150,151,152,153,154,155,156,157,158],
                 'snack-chips': [2],
                 'snack-chocolate': [3],
                 'snack-nuts': [],
@@ -2283,9 +4533,10 @@
 
             const categoryNames = {
                 'drink-carbonated': '碳酸饮料',
-                'drink-juice': '果汁饮品',
-                'drink-tea': '茶饮系列',
-                'drink-coffee': '咖啡饮品',
+                'drink-kangshifu': '康师傅饮料',
+                'drink-tongyi': '统一饮料',
+                'drink-wahaha-nongfu': '娃哈哈与农夫饮料',
+                'drink-other': '其他饮料',
                 'snack-chips': '薯片虾条',
                 'snack-chocolate': '巧克力糖果',
                 'snack-nuts': '坚果炒货',
@@ -2889,6 +5140,183 @@
                     });
                 });
             }
+            
+            // 结算页面功能
+            
+            // 计算订单金额
+            function calculateOrderAmount() {
+                const subtotal = cart.getTotal();
+                const discount = 10.0;
+                const total = subtotal - discount;
+                
+                // 更新显示
+                subtotalElement.textContent = `¥${subtotal.toFixed(2)}`;
+                totalAmountElement.textContent = `¥${total.toFixed(2)}`;
+                footerTotalElement.textContent = `¥${total.toFixed(2)}`;
+                alipayAmount.textContent = `¥${total.toFixed(2)}`;
+                wechatAmount.textContent = `¥${total.toFixed(2)}`;
+                
+                return { subtotal, total, discount };
+            }
+            
+            // 生成订单商品列表
+            function generateOrderItems() {
+                orderItemsContainer.innerHTML = '';
+                
+                cart.items.forEach(item => {
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="order-item-img">
+                        <div class="order-item-info">
+                            <div class="order-item-name">${item.name}</div>
+                            <div class="order-item-spec">原味 / 标准装</div>
+                            <div class="order-item-footer">
+                                <div class="order-item-price">¥${item.price.toFixed(2)}</div>
+                                <div class="order-item-quantity">×${item.quantity}</div>
+                            </div>
+                        </div>
+                    `;
+                    orderItemsContainer.appendChild(orderItem);
+                });
+            }
+            
+            // 更新支付倒计时
+            function updatePaymentTimer() {
+                const minutes = Math.floor(paymentTimer / 60);
+                const seconds = paymentTimer % 60;
+                const timerText = `支付剩余时间：${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                alipayTimer.textContent = timerText;
+                wechatTimer.textContent = timerText;
+                
+                if (paymentTimer <= 0) {
+                    clearInterval(timerInterval);
+                    showToast('支付超时，请重新下单');
+                    setTimeout(() => {
+                        closeCheckoutPage();
+                    }, 1500);
+                } else {
+                    paymentTimer--;
+                }
+            }
+            
+            // 开始支付倒计时
+            function startPaymentTimer() {
+                clearInterval(timerInterval);
+                paymentTimer = 15 * 60; // 重置为15分钟
+                updatePaymentTimer();
+                timerInterval = setInterval(updatePaymentTimer, 1000);
+            }
+            
+            // 切换支付方式
+            function switchPayment(paymentMethod) {
+                // 更新支付选项的选中状态
+                paymentOptions.forEach(option => {
+                    if (option.getAttribute('data-payment') === paymentMethod) {
+                        option.classList.add('selected');
+                    } else {
+                        option.classList.remove('selected');
+                    }
+                });
+                
+                // 更新当前支付方式
+                currentPayment = paymentMethod;
+                
+                // 显示对应的二维码区域
+                if (paymentMethod === 'alipay') {
+                    alipayQrcode.style.display = 'block';
+                    wechatQrcode.style.display = 'none';
+                } else {
+                    alipayQrcode.style.display = 'none';
+                    wechatQrcode.style.display = 'block';
+                }
+                
+                // 更新支付成功页面的支付方式显示
+                successPaymentMethod.textContent = paymentMethod === 'alipay' ? '支付宝支付' : '微信支付';
+                
+                // 更新按钮文本
+                showQrcodeBtn.innerHTML = `<i class="fas fa-qrcode"></i> 显示${paymentMethod === 'alipay' ? '支付宝' : '微信'}付款码`;
+            }
+            
+            // 显示结算页面
+            function openCheckoutPage() {
+                if (cart.items.length === 0) {
+                    showToast('购物车为空，请先添加商品');
+                    return;
+                }
+                
+                checkoutPage.style.display = 'block';
+                checkoutPage.classList.add('page-enter');
+                document.body.style.overflow = 'hidden';
+                
+                // 初始化订单数据
+                calculateOrderAmount();
+                generateOrderItems();
+                
+                // 默认显示支付宝二维码
+                switchPayment('alipay');
+                
+                // 开始支付倒计时
+                startPaymentTimer();
+                
+                // 更新支付时间
+                const now = new Date();
+                const paymentTime = now.toLocaleString('zh-CN', { 
+                    year: 'numeric', 
+                    month: '2-digit', 
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                successPaymentTime.textContent = paymentTime;
+                
+                // 关闭购物车
+                closeCart();
+            }
+            
+            // 关闭结算页面
+            function closeCheckoutPage() {
+                checkoutPage.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                clearInterval(timerInterval);
+                qrcodeVisible = false;
+                
+                // 重置二维码显示状态
+                alipayQrcode.style.display = 'none';
+                wechatQrcode.style.display = 'none';
+                showQrcodeBtn.innerHTML = `<i class="fas fa-qrcode"></i> 显示付款码`;
+            }
+            
+            // 显示支付成功页面
+            function showSuccessPage() {
+                successPage.style.display = 'block';
+                successPage.classList.add('page-enter');
+            }
+            
+            // 关闭支付成功页面
+            function closeSuccessPage() {
+                successPage.style.display = 'none';
+            }
+            
+            // 模拟支付成功
+            function simulatePaymentSuccess() {
+                // 模拟支付处理中
+                showQrcodeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 支付处理中';
+                showQrcodeBtn.classList.add('disabled');
+                
+                // 2秒后显示支付成功
+                setTimeout(() => {
+                    closeCheckoutPage();
+                    showSuccessPage();
+                    showToast('支付成功！订单已确认');
+                    
+                    // 清空购物车
+                    cart.items = [];
+                    updateCartDisplay();
+                }, 2000);
+            }
 
             // 事件绑定
             cartIcon.addEventListener('click', openCart);
@@ -2901,6 +5329,8 @@
                 closeCategoryProductsPage();
                 closeAboutPage();
                 closeHotProductsPage();
+                closeCheckoutPage();
+                closeSuccessPage();
             });
 
             // 商品详情页的加入购物车按钮
@@ -2917,7 +5347,7 @@
                     addToCart(currentProductId, currentQuantity);
                     closeProductDetail();
                     openCart();
-                    showToast('跳转到结算页面');
+                    showToast('商品已加入购物车');
                 }
             });
 
@@ -2944,15 +5374,12 @@
                 });
             });
 
-            // 结算按钮
+            // 购物车结算按钮
             checkoutBtn.addEventListener('click', function() {
                 if (cart.items.length === 0) {
                     showToast('购物车为空，请先添加商品');
                 } else {
-                    showToast('跳转到结算页面（模拟）');
-                    setTimeout(() => {
-                        closeCart();
-                    }, 1000);
+                    openCheckoutPage();
                 }
             });
 
@@ -2973,6 +5400,8 @@
                     closeCart();
                     closeAboutPage();
                     closeHotProductsPage();
+                    closeCheckoutPage();
+                    closeSuccessPage();
                     clearSearch();
                     
                     if (page === 'category') {
@@ -3026,6 +5455,9 @@
             
             // 爆款推荐页面关闭按钮
             hotProductsClose.addEventListener('click', closeHotProductsPage);
+            
+            // 结算页面关闭按钮
+            checkoutClose.addEventListener('click', closeCheckoutPage);
 
             // 立即联系按钮
             contactNowBtn.addEventListener('click', function() {
@@ -3068,6 +5500,62 @@
             viewMoreHot.addEventListener('click', function() {
                 openHotProductsPage();
             });
+            
+            // 结算页面事件绑定
+            
+            // 支付方式切换
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const paymentMethod = this.getAttribute('data-payment');
+                    switchPayment(paymentMethod);
+                    
+                    // 如果二维码已显示，更新显示的二维码
+                    if (qrcodeVisible) {
+                        alipayQrcode.style.display = paymentMethod === 'alipay' ? 'block' : 'none';
+                        wechatQrcode.style.display = paymentMethod === 'wechat' ? 'block' : 'none';
+                    }
+                });
+            });
+            
+            // 显示/隐藏付款码
+            showQrcodeBtn.addEventListener('click', function() {
+                if (!qrcodeVisible) {
+                    // 显示付款码
+                    alipayQrcode.style.display = currentPayment === 'alipay' ? 'block' : 'none';
+                    wechatQrcode.style.display = currentPayment === 'wechat' ? 'block' : 'none';
+                    showQrcodeBtn.innerHTML = `<i class="fas fa-eye-slash"></i> 隐藏付款码`;
+                    qrcodeVisible = true;
+                    
+                    // 模拟扫码支付
+                    setTimeout(() => {
+                        simulatePaymentSuccess();
+                    }, 3000); // 3秒后自动模拟支付成功
+                } else {
+                    // 隐藏付款码
+                    alipayQrcode.style.display = 'none';
+                    wechatQrcode.style.display = 'none';
+                    showQrcodeBtn.innerHTML = `<i class="fas fa-qrcode"></i> 显示${currentPayment === 'alipay' ? '支付宝' : '微信'}付款码`;
+                    qrcodeVisible = false;
+                }
+            });
+            
+            // 修改地址
+            addressSection.addEventListener('click', function() {
+                showToast('地址选择功能（模拟）');
+            });
+            
+            // 查看订单
+            viewOrderBtn.addEventListener('click', function() {
+                showToast('查看订单功能（模拟）');
+                closeSuccessPage();
+            });
+            
+            // 返回首页
+            backHomeBtn.addEventListener('click', function() {
+                closeSuccessPage();
+                showToast('返回首页');
+                // 在实际应用中，这里可以跳转到首页
+            });
 
             // 初始化
             updateCartDisplay();
@@ -3076,7 +5564,9 @@
             
             console.log('佳宇商贸配送中心商城已初始化完成！');
             console.log(`已添加 ${Object.keys(products).length} 个商品，包含完整的美好系列产品。`);
+            console.log('结算页面已集成完成！');
         });
     </script>
+    </div> <!-- 结束main-content -->
 </body>
 </html>

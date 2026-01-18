@@ -1577,6 +1577,524 @@
             animation: pulse 2s infinite;
         }
         
+        /* ========== 我的订单页面样式 ========== */
+.orders-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 2006;
+    overflow-y: auto;
+}
+
+.orders-content {
+    padding: 16px;
+    padding-top: 60px;
+}
+
+.orders-filter {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.orders-filter .filter-item {
+    padding: 8px 16px;
+    background-color: var(--light-gray);
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.orders-filter .filter-item.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.order-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border);
+}
+
+.order-number {
+    font-weight: bold;
+    color: var(--dark);
+    font-size: 14px;
+}
+
+.order-status {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.status-pending {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+.status-delivering {
+    background-color: #D1ECF1;
+    color: #0C5460;
+}
+
+.status-completed {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.status-cancelled {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.order-time {
+    color: var(--gray);
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.order-items-preview {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.order-item-preview {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.order-item-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-more-items {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: var(--light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.order-total {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.order-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.order-action-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: 1px solid var(--primary);
+    background-color: white;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.order-action-btn:hover {
+    background-color: var(--primary-light);
+}
+
+.order-action-btn.primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* 订单详情弹窗 */
+.order-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-content {
+    background-color: var(--white);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideInUp 0.3s ease-out;
+}
+
+.modal-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    z-index: 1;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.modal-close {
+    font-size: 20px;
+    color: var(--gray);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+    background-color: var(--light-gray);
+}
+
+.modal-body {
+    padding: 16px;
+}
+
+/* 个人资料页面样式 */
+.profile-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 2007;
+    overflow-y: auto;
+}
+
+.profile-content {
+    padding: 16px;
+    padding-top: 60px;
+}
+
+.profile-section {
+    margin-bottom: 24px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.profile-avatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.edit-avatar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--dark);
+}
+
+.profile-phone {
+    color: var(--gray);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.info-list {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: var(--dark);
+    font-size: 15px;
+}
+
+.info-value {
+    color: var(--gray);
+    font-size: 15px;
+}
+
+.address-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.address-tag {
+    background-color: var(--primary);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.edit-address {
+    color: var(--primary);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.address-detail {
+    color: var(--dark);
+}
+
+.address-name {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.address-text {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.add-address-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--white);
+    border: 1px dashed var(--primary);
+    color: var(--primary);
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.add-address-btn:hover {
+    background-color: var(--primary-light);
+}
+
+.order-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 8px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-count {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 0 4px;
+    color: var(--dark);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.settings-list {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-item:hover {
+    background-color: var(--light-gray);
+}
+
+.setting-item i:first-child {
+    margin-right: 12px;
+    width: 24px;
+    text-align: center;
+}
+
+.setting-label {
+    flex: 1;
+    color: var(--dark);
+    font-size: 15px;
+}
+
+.logout-section {
+    margin-top: 32px;
+    padding: 16px;
+    text-align: center;
+}
+
+.logout-btn {
+    padding: 12px 32px;
+    background-color: var(--white);
+    border: 1px solid #FF6B6B;
+    color: #FF6B6B;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #FF6B6B;
+    color: white;
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+    .order-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stat-item {
+        padding: 12px 4px;
+    }
+}
+
         /* 响应式调整 */
         @media (min-width: 768px) {
             body {
@@ -1769,6 +2287,91 @@
     }
 }
 /* ========== 欢迎动画样式结束 ========== */
+/* ========== 模拟支付系统样式 ========== */
+
+/* 支付成功/失败提示 */
+.toast {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    z-index: 3000;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+/* 模拟支付弹窗动画 */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#mock-payment-modal {
+    animation: modalFadeIn 0.3s ease-in-out;
+}
+
+/* 订单查询按钮响应式调整 */
+@media (max-width: 480px) {
+    #order-query-btn {
+        bottom: 120px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .toast {
+        top: 80px;
+        font-size: 13px;
+        padding: 10px 20px;
+        max-width: 80%;
+        text-align: center;
+    }
+}
+/* 支付成功页面动画 */
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.success-page .success-content {
+    animation: slideInUp 0.5s ease-out;
+}
+
+/* 订单详情弹窗 */
+#close-order-detail {
+    transition: all 0.3s ease;
+}
+
+#close-order-detail:hover {
+    color: #FF7B29;
+    transform: rotate(90deg);
+}
+
+/* 打印和分享按钮悬停效果 */
+#print-order-btn:hover, #share-order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
     </style>
 </head>
 <body>
@@ -1927,25 +2530,29 @@
         </div>
     </main>
 
-    <!-- 底部导航 -->
-    <nav class="bottom-nav">
-        <div class="nav-item active" data-page="home">
-            <i class="fas fa-home nav-icon"></i>
-            <span>首页</span>
-        </div>
-        <div class="nav-item" data-page="category">
-            <i class="fas fa-th-large nav-icon"></i>
-            <span>分类</span>
-        </div>
-        <div class="nav-item" data-page="hot">
-            <i class="fas fa-fire nav-icon"></i>
-            <span>爆款</span>
-        </div>
-        <div class="nav-item" data-page="about">
-            <i class="fas fa-user nav-icon"></i>
-            <span>我的</span>
-        </div>
-    </nav>
+    <!-- 在底部导航部分（大约在第385行附近）修改底部导航结构 -->
+<nav class="bottom-nav">
+    <div class="nav-item active" data-page="home">
+        <i class="fas fa-home nav-icon"></i>
+        <span>首页</span>
+    </div>
+    <div class="nav-item" data-page="category">
+        <i class="fas fa-th-large nav-icon"></i>
+        <span>分类</span>
+    </div>
+    <div class="nav-item" data-page="hot">
+        <i class="fas fa-fire nav-icon"></i>
+        <span>爆款</span>
+    </div>
+    <div class="nav-item" data-page="orders">
+        <i class="fas fa-clipboard-list nav-icon"></i>
+        <span>订单</span>
+    </div>
+    <div class="nav-item" data-page="about">
+        <i class="fas fa-user nav-icon"></i>
+        <span>我的</span>
+    </div>
+</nav>
 
     <!-- 爆款推荐页面 -->
     <div class="hot-products-page" id="hot-products-page" style="display: none;">
@@ -2409,8 +3016,9 @@
                     <div class="total-amount" id="footer-total">¥279.80</div>
                 </div>
                 <button class="pay-button" id="show-qrcode">
-                    <i class="fas fa-qrcode"></i>
-                    显示付款码
+    <i class="fas fa-credit-card"></i>
+    立即支付
+</button>
                 </button>
             </div>
         </div>
@@ -2453,6 +3061,215 @@
             </div>
         </div>
     </div>
+    <!-- 我的订单页面 -->
+<div class="orders-page" id="orders-page" style="display: none;">
+    <div class="detail-header">
+        <div class="detail-close" id="orders-close">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="cart-title">我的订单</div>
+        <div class="header-actions">
+            <i class="fas fa-user-circle header-icon" id="user-profile" style="font-size: 20px; color: var(--primary);"></i>
+        </div>
+    </div>
+    
+    <div class="orders-content">
+        <!-- 订单筛选标签 -->
+        <div class="orders-filter">
+            <div class="filter-item active" data-status="all">全部</div>
+            <div class="filter-item" data-status="pending">待付款</div>
+            <div class="filter-item" data-status="delivering">配送中</div>
+            <div class="filter-item" data-status="completed">已完成</div>
+            <div class="filter-item" data-status="cancelled">已取消</div>
+        </div>
+        
+        <!-- 订单列表 -->
+        <div class="orders-list" id="orders-list">
+            <!-- 订单会通过JavaScript动态生成 -->
+            <div class="loading" id="orders-loading">
+                <div class="spinner"></div>
+                <div style="margin-top: 12px; color: var(--gray);">加载订单中...</div>
+            </div>
+        </div>
+        
+        <!-- 空状态 -->
+        <div class="no-orders" id="no-orders" style="display: none;">
+            <div class="no-results">
+                <i class="fas fa-clipboard-list"></i>
+                <p>暂无订单</p>
+                <p style="font-size: 14px; margin-top: 8px;">去选购心仪的商品吧</p>
+                <button class="action-btn" id="go-shopping" style="margin-top: 20px; background-color: var(--primary); color: white;">
+                    <i class="fas fa-shopping-cart"></i> 去购物
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 订单详情弹窗 -->
+<div class="order-detail-modal" id="order-detail-modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">订单详情</div>
+            <div class="modal-close" id="order-detail-close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="modal-body">
+            <!-- 订单详情会通过JavaScript动态生成 -->
+        </div>
+    </div>
+</div>
+
+<!-- 个人资料页面 -->
+<div class="profile-page" id="profile-page" style="display: none;">
+    <div class="detail-header">
+        <div class="detail-close" id="profile-close">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="cart-title">个人资料</div>
+    </div>
+    
+    <div class="profile-content">
+        <!-- 用户头像和基本信息 -->
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle" style="font-size: 80px; color: var(--primary);"></i>
+                    <button class="edit-avatar">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">张先生</h2>
+                    <div class="profile-phone">
+                        <i class="fas fa-phone" style="margin-right: 8px; color: var(--gray);"></i>
+                        138****5678
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 账户信息 -->
+        <div class="profile-section">
+            <div class="section-title">
+                <i class="fas fa-user-circle" style="color: var(--primary); margin-right: 8px;"></i>
+                账户信息
+            </div>
+            <div class="info-list">
+                <div class="info-item">
+                    <span class="info-label">会员等级</span>
+                    <span class="info-value">
+                        <span class="badge" style="background-color: #FFD700; color: #333; padding: 4px 8px; border-radius: 12px; font-size: 12px;">
+                            <i class="fas fa-crown" style="margin-right: 4px;"></i> 黄金会员
+                        </span>
+                    </span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">账户余额</span>
+                    <span class="info-value">¥ 1,288.00</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">优惠券</span>
+                    <span class="info-value">5 张</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">积分</span>
+                    <span class="info-value">1,250 分</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 收货地址管理 -->
+        <div class="profile-section">
+            <div class="section-title">
+                <i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i>
+                收货地址
+            </div>
+            <div class="address-card" id="default-address">
+                <div class="address-header">
+                    <span class="address-tag">默认地址</span>
+                    <span class="edit-address" id="edit-address">编辑</span>
+                </div>
+                <div class="address-detail">
+                    <div class="address-name">张先生 138****5678</div>
+                    <div class="address-text">四川省成都市龙泉驿区成洛大道西博西南食品城餐饮区21-24号</div>
+                </div>
+            </div>
+            <button class="add-address-btn" id="add-address">
+                <i class="fas fa-plus"></i> 添加新地址
+            </button>
+        </div>
+        
+        <!-- 我的订单 -->
+        <div class="profile-section">
+            <div class="section-title">
+                <i class="fas fa-clipboard-list" style="color: var(--primary); margin-right: 8px;"></i>
+                我的订单
+            </div>
+            <div class="order-stats">
+                <div class="stat-item" id="go-to-pending">
+                    <i class="fas fa-clock" style="font-size: 24px; color: #FF9800;"></i>
+                    <span class="stat-count">2</span>
+                    <span class="stat-label">待付款</span>
+                </div>
+                <div class="stat-item" id="go-to-delivering">
+                    <i class="fas fa-truck" style="font-size: 24px; color: #2196F3;"></i>
+                    <span class="stat-count">1</span>
+                    <span class="stat-label">配送中</span>
+                </div>
+                <div class="stat-item" id="go-to-completed">
+                    <i class="fas fa-check-circle" style="font-size: 24px; color: #4CAF50;"></i>
+                    <span class="stat-count">5</span>
+                    <span class="stat-label">已完成</span>
+                </div>
+                <div class="stat-item" id="go-to-all-orders">
+                    <i class="fas fa-list" style="font-size: 24px; color: #9C27B0;"></i>
+                    <span class="stat-count">8</span>
+                    <span class="stat-label">全部订单</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设置 -->
+        <div class="profile-section">
+            <div class="section-title">
+                <i class="fas fa-cog" style="color: var(--primary); margin-right: 8px;"></i>
+                设置
+            </div>
+            <div class="settings-list">
+                <div class="setting-item" id="notification-settings">
+                    <i class="fas fa-bell" style="color: #FF9800;"></i>
+                    <span class="setting-label">消息通知</span>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                <div class="setting-item" id="privacy-settings">
+                    <i class="fas fa-shield-alt" style="color: #2196F3;"></i>
+                    <span class="setting-label">隐私设置</span>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                <div class="setting-item" id="about-app">
+                    <i class="fas fa-info-circle" style="color: #9C27B0;"></i>
+                    <span class="setting-label">关于应用</span>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                <div class="setting-item" id="customer-service">
+                    <i class="fas fa-headset" style="color: #4CAF50;"></i>
+                    <span class="setting-label">客服中心</span>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 退出登录 -->
+        <div class="logout-section">
+            <button class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> 退出登录
+            </button>
+        </div>
+    </div>
+</div>
 
     <!-- 商品详情页 -->
     <div class="product-detail" id="product-detail" style="display: none;">
@@ -2545,6 +3362,33 @@
     <div class="overlay" id="overlay"></div>
 
     <script>
+        // 调试模式
+const DEBUG_MODE = true;
+
+// 支付系统调试函数
+function debugLog(message, data = null) {
+    if (DEBUG_MODE) {
+        console.log(`[支付系统] ${message}`, data || '');
+    }
+}
+
+// 初始化时显示当前订单状态
+function checkExistingOrders() {
+    const currentOrder = JSON.parse(localStorage.getItem('current_order') || '{}');
+    const orderHistory = JSON.parse(localStorage.getItem('order_history') || '[]');
+    
+    debugLog('当前订单:', currentOrder);
+    debugLog('历史订单数量:', orderHistory.length);
+    
+    if (currentOrder.order_id) {
+        console.log(`当前有未完成订单: ${currentOrder.order_id} (${currentOrder.status})`);
+    }
+}
+
+// 在DOM加载完成后运行
+document.addEventListener('DOMContentLoaded', function() {
+    checkExistingOrders();
+});
         document.addEventListener('DOMContentLoaded', function() {
             // ========== 欢迎动画控制代码 ==========
 // 获取欢迎动画相关DOM元素
@@ -2732,6 +3576,22 @@ initWelcomeAnimation();
             const viewOrderBtn = document.getElementById('view-order');
             const backHomeBtn = document.getElementById('back-home');
             
+            // 订单页面相关元素
+const ordersPage = document.getElementById('orders-page');
+const ordersClose = document.getElementById('orders-close');
+const ordersList = document.getElementById('orders-list');
+const ordersLoading = document.getElementById('orders-loading');
+const noOrders = document.getElementById('no-orders');
+const goShoppingBtn = document.getElementById('go-shopping');
+const orderDetailModal = document.getElementById('order-detail-modal');
+const orderDetailClose = document.getElementById('order-detail-close');
+const profilePage = document.getElementById('profile-page');
+const profileClose = document.getElementById('profile-close');
+const userProfileBtn = document.getElementById('user-profile');
+const filterItems = document.querySelectorAll('.filter-item');
+const logoutBtn = document.getElementById('logout-btn');
+const goAllOrdersBtn = document.getElementById('go-to-all-orders');
+
             // 当前查看的商品详情
             let currentProductId = null;
             let currentQuantity = 1;
@@ -4505,6 +5365,64 @@ initWelcomeAnimation();
                     return this.items.reduce((total, item) => total + item.quantity, 0);
                 }
             };
+
+            // ========== 模拟订单数据 ==========
+const ordersData = [
+    {
+        id: 'JY20230615001',
+        date: '2023-06-15 14:30:25',
+        status: 'completed',
+        total: 279.80,
+        paymentMethod: '支付宝支付',
+        items: [
+            { id: 1, name: '可口可乐330ml*6瓶', price: 19.9, quantity: 2, image: products[1].image },
+            { id: 2, name: '乐事薯片大礼包', price: 29.9, quantity: 1, image: products[2].image },
+            { id: 5, name: '美好火腿肠40G*10支*10袋', price: 106.0, quantity: 1, image: products[5].image }
+        ]
+    },
+    {
+        id: 'JY20230614002',
+        date: '2023-06-14 10:15:33',
+        status: 'delivering',
+        total: 158.80,
+        paymentMethod: '微信支付',
+        items: [
+            { id: 54, name: '康师傅冰红茶1L*12', price: 40.0, quantity: 2, image: products[54].image },
+            { id: 126, name: '娃哈哈苏打水350ML*24瓶', price: 42.0, quantity: 1, image: products[126].image }
+        ]
+    },
+    {
+        id: 'JY20230613003',
+        date: '2023-06-13 16:45:12',
+        status: 'pending',
+        total: 320.00,
+        paymentMethod: '支付宝支付',
+        items: [
+            { id: 52, name: '美好农家小酥肉（猪肉）1KG*10袋', price: 360.0, quantity: 1, image: products[52].image }
+        ]
+    },
+    {
+        id: 'JY20230612004',
+        date: '2023-06-12 09:20:55',
+        status: 'completed',
+        total: 95.80,
+        paymentMethod: '微信支付',
+        items: [
+            { id: 20, name: '美好卤蛋35G*100个', price: 120.0, quantity: 1, image: products[20].image },
+            { id: 3, name: '德芙巧克力分享装', price: 15.8, quantity: 2, image: products[3].image }
+        ]
+    },
+    {
+        id: 'JY20230611005',
+        date: '2023-06-11 11:30:10',
+        status: 'cancelled',
+        total: 215.00,
+        paymentMethod: '支付宝支付',
+        items: [
+            { id: 29, name: '美好优级王中王60G*10支*16袋', price: 240.0, quantity: 1, image: products[29].image }
+        ]
+    }
+];
             
             // 分类数据
             const productsByCategory = {
@@ -4771,6 +5689,290 @@ initWelcomeAnimation();
                 setInterval(update, 1000);
             }
             
+// ========== 订单相关功能 ==========
+// 打开订单页面
+function openOrdersPage() {
+    ordersPage.style.display = 'block';
+    ordersPage.classList.add('page-enter');
+    document.body.style.overflow = 'hidden';
+    loadOrders('all');
+}
+
+// 关闭订单页面
+function closeOrdersPage() {
+    ordersPage.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 打开个人资料页面
+function openProfilePage() {
+    profilePage.style.display = 'block';
+    profilePage.classList.add('page-enter');
+    document.body.style.overflow = 'hidden';
+}
+
+// 关闭个人资料页面
+function closeProfilePage() {
+    profilePage.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 加载订单
+function loadOrders(status = 'all') {
+    ordersLoading.style.display = 'flex';
+    ordersList.style.display = 'none';
+    noOrders.style.display = 'none';
+    
+    setTimeout(() => {
+        let filteredOrders = ordersData;
+        if (status !== 'all') {
+            filteredOrders = ordersData.filter(order => order.status === status);
+        }
+        
+        ordersLoading.style.display = 'none';
+        
+        if (filteredOrders.length === 0) {
+            noOrders.style.display = 'block';
+            ordersList.style.display = 'none';
+        } else {
+            noOrders.style.display = 'none';
+            ordersList.style.display = 'flex';
+            renderOrders(filteredOrders);
+        }
+    }, 500);
+}
+
+// 渲染订单列表
+function renderOrders(orders) {
+    ordersList.innerHTML = '';
+    
+    orders.forEach(order => {
+        const orderCard = document.createElement('div');
+        orderCard.className = 'order-card';
+        orderCard.setAttribute('data-order-id', order.id);
+        
+        // 状态文本和样式
+        let statusText = '';
+        let statusClass = '';
+        switch(order.status) {
+            case 'pending':
+                statusText = '待付款';
+                statusClass = 'status-pending';
+                break;
+            case 'delivering':
+                statusText = '配送中';
+                statusClass = 'status-delivering';
+                break;
+            case 'completed':
+                statusText = '已完成';
+                statusClass = 'status-completed';
+                break;
+            case 'cancelled':
+                statusText = '已取消';
+                statusClass = 'status-cancelled';
+                break;
+        }
+        
+        // 商品预览（最多显示3个）
+        let itemsPreview = '';
+        for (let i = 0; i < Math.min(order.items.length, 3); i++) {
+            itemsPreview += `
+                <div class="order-item-preview">
+                    <img src="${order.items[i].image}" alt="${order.items[i].name}">
+                </div>
+            `;
+        }
+        
+        // 如果商品超过3个，显示更多提示
+        if (order.items.length > 3) {
+            itemsPreview += `
+                <div class="order-more-items">
+                    +${order.items.length - 3}
+                </div>
+            `;
+        }
+        
+        // 操作按钮
+        let actionButtons = '';
+        if (order.status === 'pending') {
+            actionButtons = `
+                <button class="order-action-btn primary" onclick="payOrder('${order.id}')">立即支付</button>
+                <button class="order-action-btn" onclick="cancelOrder('${order.id}')">取消订单</button>
+            `;
+        } else if (order.status === 'delivering') {
+            actionButtons = `
+                <button class="order-action-btn" onclick="viewDelivery('${order.id}')">查看物流</button>
+                <button class="order-action-btn" onclick="confirmReceipt('${order.id}')">确认收货</button>
+            `;
+        } else if (order.status === 'completed') {
+            actionButtons = `
+                <button class="order-action-btn" onclick="buyAgain('${order.id}')">再次购买</button>
+                <button class="order-action-btn" onclick="viewDetail('${order.id}')">查看详情</button>
+            `;
+        } else {
+            actionButtons = `
+                <button class="order-action-btn" onclick="buyAgain('${order.id}')">再次购买</button>
+            `;
+        }
+        
+        orderCard.innerHTML = `
+            <div class="order-header">
+                <div class="order-number">订单号：${order.id}</div>
+                <div class="order-status ${statusClass}">${statusText}</div>
+            </div>
+            <div class="order-time">下单时间：${order.date}</div>
+            <div class="order-items-preview">
+                ${itemsPreview}
+            </div>
+            <div class="order-footer">
+                <div class="order-total">¥${order.total.toFixed(2)}</div>
+                <div class="order-actions">
+                    ${actionButtons}
+                </div>
+            </div>
+        `;
+        
+        ordersList.appendChild(orderCard);
+    });
+    
+    // 绑定订单卡片点击事件（查看详情）
+    document.querySelectorAll('.order-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // 如果点击的是操作按钮，不触发查看详情
+            if (!e.target.closest('.order-action-btn')) {
+                const orderId = this.getAttribute('data-order-id');
+                viewOrderDetail(orderId);
+            }
+        });
+    });
+}
+
+// 查看订单详情
+function viewOrderDetail(orderId) {
+    const order = ordersData.find(o => o.id === orderId);
+    if (!order) return;
+    
+    let statusText = '';
+    switch(order.status) {
+        case 'pending': statusText = '待付款'; break;
+        case 'delivering': statusText = '配送中'; break;
+        case 'completed': statusText = '已完成'; break;
+        case 'cancelled': statusText = '已取消'; break;
+    }
+    
+    // 生成商品列表HTML
+    let itemsHtml = '';
+    order.items.forEach(item => {
+        itemsHtml += `
+            <div class="order-item-detail">
+                <img src="${item.image}" alt="${item.name}" class="item-image">
+                <div class="item-info">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-price">¥${item.price.toFixed(2)} × ${item.quantity}</div>
+                </div>
+                <div class="item-subtotal">¥${(item.price * item.quantity).toFixed(2)}</div>
+            </div>
+        `;
+    });
+    
+    const modalBody = document.querySelector('.modal-body');
+    modalBody.innerHTML = `
+        <div class="order-detail-info">
+            <div class="detail-section">
+                <div class="section-label">订单状态</div>
+                <div class="detail-value">${statusText}</div>
+            </div>
+            <div class="detail-section">
+                <div class="section-label">订单号</div>
+                <div class="detail-value">${order.id}</div>
+            </div>
+            <div class="detail-section">
+                <div class="section-label">下单时间</div>
+                <div class="detail-value">${order.date}</div>
+            </div>
+            <div class="detail-section">
+                <div class="section-label">支付方式</div>
+                <div class="detail-value">${order.paymentMethod}</div>
+            </div>
+            <div class="detail-section">
+                <div class="section-label">商品清单</div>
+                ${itemsHtml}
+            </div>
+            <div class="detail-section">
+                <div class="summary-item">
+                    <span class="summary-label">商品总额</span>
+                    <span class="summary-value">¥${order.total.toFixed(2)}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">配送费</span>
+                    <span class="summary-value">¥0.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span class="summary-label">实付金额</span>
+                    <span class="summary-value">¥${order.total.toFixed(2)}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    orderDetailModal.style.display = 'flex';
+}
+
+// 关闭订单详情
+function closeOrderDetail() {
+    orderDetailModal.style.display = 'none';
+}
+
+// 订单操作函数
+function payOrder(orderId) {
+    showToast('正在跳转到支付页面...');
+    // 这里可以跳转到支付页面
+}
+
+function cancelOrder(orderId) {
+    if (confirm('确定要取消这个订单吗？')) {
+        showToast('订单已取消');
+        // 更新订单状态
+        const order = ordersData.find(o => o.id === orderId);
+        if (order) {
+            order.status = 'cancelled';
+            loadOrders('all');
+        }
+    }
+}
+
+function viewDelivery(orderId) {
+    showToast('正在查询物流信息...');
+}
+
+function confirmReceipt(orderId) {
+    if (confirm('确认收到商品了吗？')) {
+        showToast('收货成功，感谢您的购买！');
+        // 更新订单状态
+        const order = ordersData.find(o => o.id === orderId);
+        if (order) {
+            order.status = 'completed';
+            loadOrders('all');
+        }
+    }
+}
+
+function buyAgain(orderId) {
+    const order = ordersData.find(o => o.id === orderId);
+    if (order) {
+        // 清空购物车
+        cart.items = [];
+        // 添加订单商品到购物车
+        order.items.forEach(item => {
+            addToCart(item.id, item.quantity);
+        });
+        showToast('商品已添加到购物车');
+        closeOrderDetail();
+        closeOrdersPage();
+        openCart();
+    }
+}
+
             // 搜索功能
             function performSearch(searchTerm) {
                 if (!searchTerm.trim()) {
@@ -5384,38 +6586,53 @@ initWelcomeAnimation();
             });
 
             // 底部导航点击效果
-            bottomNavItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const page = this.getAttribute('data-page');
-                    
-                    // 移除所有active类
-                    bottomNavItems.forEach(nav => nav.classList.remove('active'));
-                    // 添加当前active类
-                    this.classList.add('active');
-                    
-                    // 隐藏所有页面
-                    closeCategoryPage();
-                    closeCategoryProductsPage();
-                    closeProductDetail();
-                    closeCart();
-                    closeAboutPage();
-                    closeHotProductsPage();
-                    closeCheckoutPage();
-                    closeSuccessPage();
-                    clearSearch();
-                    
-                    if (page === 'category') {
-                        openCategoryPage();
-                    } else if (page === 'hot') {
-                        openHotProductsPage();
-                    } else if (page === 'about') {
-                        openAboutPage();
-                    } else if (page === 'home') {
-                        // 显示首页
-                        showToast('回到首页');
-                    }
-                });
-            });
+           // ========== 在底部导航事件绑定部分添加 ==========
+// 找到底部导航事件绑定的部分（大约在事件绑定部分），添加：
+bottomNavItems.forEach(item => {
+    item.addEventListener('click', function() {
+        const page = this.getAttribute('data-page');
+        
+        // 移除所有active类
+        bottomNavItems.forEach(navItem => navItem.classList.remove('active'));
+        // 给当前点击项添加active类
+        this.classList.add('active');
+        
+    // 根据页面切换内容
+        switch(page) {
+            case 'home':
+                // 已经在首页，不需要操作
+                break;
+            case 'category':
+                openCategoryPage();
+                break;
+            case 'hot':
+                openHotProductsPage();
+                break;
+            // ========== 添加这行 ↓↓↓ ==========
+            case 'orders':
+                openOrdersPage();
+                break;
+            // ========== 添加结束 ==========
+            case 'about':
+                openAboutPage();
+                break;
+        }
+        
+        if (page === 'home') {
+            // 返回首页
+            returnToHomePage();
+        } else if (page === 'category') {
+            // 打开分类页面
+            openCategoryPage();
+        } else if (page === 'hot') {
+            // 打开爆款页面
+            openHotProductsPage();
+        } else if (page === 'about') {
+            // 打开关于页面
+            openAboutPage();
+        }
+    });
+});
             
             // 快捷入口点击事件
             quickItems.forEach(item => {
@@ -5517,27 +6734,33 @@ initWelcomeAnimation();
                 });
             });
             
-            // 显示/隐藏付款码
             showQrcodeBtn.addEventListener('click', function() {
-                if (!qrcodeVisible) {
-                    // 显示付款码
-                    alipayQrcode.style.display = currentPayment === 'alipay' ? 'block' : 'none';
-                    wechatQrcode.style.display = currentPayment === 'wechat' ? 'block' : 'none';
-                    showQrcodeBtn.innerHTML = `<i class="fas fa-eye-slash"></i> 隐藏付款码`;
-                    qrcodeVisible = true;
-                    
-                    // 模拟扫码支付
-                    setTimeout(() => {
-                        simulatePaymentSuccess();
-                    }, 3000); // 3秒后自动模拟支付成功
-                } else {
-                    // 隐藏付款码
-                    alipayQrcode.style.display = 'none';
-                    wechatQrcode.style.display = 'none';
-                    showQrcodeBtn.innerHTML = `<i class="fas fa-qrcode"></i> 显示${currentPayment === 'alipay' ? '支付宝' : '微信'}付款码`;
-                    qrcodeVisible = false;
-                }
-            });
+    const amount = parseFloat(totalAmountElement.textContent.replace('¥', ''));
+    
+    if (amount <= 0) {
+        alert('请先选择商品');
+        return;
+    }
+    
+    // 保存订单信息
+    const orderInfo = {
+        order_id: 'JY' + Date.now(),
+        amount: amount,
+        payment_method: currentPayment,
+        items: cart.items,
+        status: 'pending',
+        created_at: new Date().toISOString()
+    };
+    
+    localStorage.setItem('current_order', JSON.stringify(orderInfo));
+    
+    // 根据支付方式跳转
+    if (currentPayment === 'alipay') {
+        jumpToAlipayDirect(orderInfo);
+    } else if (currentPayment === 'wechat') {
+        jumpToWechatDirect(orderInfo);
+    }
+});
             
             // 修改地址
             addressSection.addEventListener('click', function() {
@@ -5548,14 +6771,223 @@ initWelcomeAnimation();
             viewOrderBtn.addEventListener('click', function() {
                 showToast('查看订单功能（模拟）');
                 closeSuccessPage();
+                // 隐藏成功页面
+    successPage.style.display = 'none';
             });
             
-            // 返回首页
-            backHomeBtn.addEventListener('click', function() {
-                closeSuccessPage();
-                showToast('返回首页');
-                // 在实际应用中，这里可以跳转到首页
-            });
+            // 返回首页按钮
+backHomeBtn.addEventListener('click', function() {
+    
+    
+    // 重置底部导航为首页
+    bottomNavItems.forEach(item => {
+        if (item.getAttribute('data-page') === 'home') {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+    
+    // 滚动到顶部
+    window.scrollTo(0, 0);
+    
+    // 清空购物车
+    cart.items = [];
+    updateCartDisplay();
+    
+    // 显示主内容区
+    document.querySelector('main').style.display = 'block';
+    document.querySelector('.header').style.display = 'flex';
+    document.querySelector('.search-container').style.display = 'block';
+    document.querySelector('.bottom-nav').style.display = 'flex';
+    
+    // 如果是从分类/关于页面返回，也隐藏那些页面
+    categoryPage.style.display = 'none';
+    aboutPage.style.display = 'none';
+    hotProductsPage.style.display = 'none';
+    categoryProductsPage.style.display = 'none';
+});
+
+// 查看订单按钮
+viewOrderBtn.addEventListener('click', function() {
+    // 获取当前订单信息
+    const currentOrder = JSON.parse(localStorage.getItem('current_order') || '{}');
+    
+    if (currentOrder.order_id) {
+        // 创建订单详情弹窗
+        const orderDetailDiv = document.createElement('div');
+        orderDetailDiv.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        `;
+        
+        // 计算订单总额
+        let itemTotal = 0;
+        const itemsHtml = (currentOrder.items || []).map(item => {
+            itemTotal += item.price * item.quantity;
+            return `
+                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee;">
+                    <div>
+                        <div style="font-weight: bold;">${item.name}</div>
+                        <div style="font-size: 12px; color: #666;">数量: ${item.quantity}</div>
+                    </div>
+                    <div style="font-weight: bold; color: #FF7B29;">
+                        ¥${(item.price * item.quantity).toFixed(2)}
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        orderDetailDiv.innerHTML = `
+            <div style="background: white; padding: 25px; border-radius: 15px; max-width: 500px; width: 100%; max-height: 80vh; overflow-y: auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3 style="color: #FF7B29; margin: 0;">订单详情</h3>
+                    <button id="close-order-detail" style="background: none; border: none; font-size: 20px; color: #999; cursor: pointer;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="color: #666;">订单号:</span>
+                        <span style="font-weight: bold;">${currentOrder.order_id}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="color: #666;">支付状态:</span>
+                        <span style="color: #4CAF50; font-weight: bold;">支付成功</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="color: #666;">支付方式:</span>
+                        <span>${currentOrder.payment_method === 'alipay' ? '支付宝支付' : '微信支付'}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="color: #666;">支付时间:</span>
+                        <span>${new Date(currentOrder.paid_at || currentOrder.created_at).toLocaleString()}</span>
+                    </div>
+                </div>
+                
+                <h4 style="margin-bottom: 15px; color: #333;">商品清单</h4>
+                <div style="margin-bottom: 20px;">
+                    ${itemsHtml || '<p style="text-align: center; color: #999; padding: 20px;">无商品信息</p>'}
+                </div>
+                
+                <div style="border-top: 2px solid #eee; padding-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold;">
+                        <span>实付金额:</span>
+                        <span style="color: #FF7B29;">¥${currentOrder.amount || itemTotal.toFixed(2)}</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px; text-align: center;">
+                    <button id="print-order-btn" style="padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 6px; margin-right: 10px; cursor: pointer;">
+                        <i class="fas fa-print"></i> 打印订单
+                    </button>
+                    <button id="share-order-btn" style="padding: 10px 20px; background: #2196F3; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                        <i class="fas fa-share-alt"></i> 分享订单
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(orderDetailDiv);
+        
+        // 关闭按钮事件
+        document.getElementById('close-order-detail').addEventListener('click', function() {
+            orderDetailDiv.remove();
+        });
+        
+        // 打印订单
+        document.getElementById('print-order-btn').addEventListener('click', function() {
+            alert('打印功能需要连接到打印机');
+            // window.print(); // 可以启用浏览器的打印功能
+        });
+        
+        // 分享订单
+        document.getElementById('share-order-btn').addEventListener('click', function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '我的订单 - 四川佳宇商贸配送中心',
+                    text: `订单号: ${currentOrder.order_id}, 金额: ¥${currentOrder.amount}`,
+                    url: window.location.href
+                });
+            } else {
+                // 复制订单号到剪贴板
+                navigator.clipboard.writeText(`订单号: ${currentOrder.order_id}, 金额: ¥${currentOrder.amount}`)
+                    .then(() => alert('订单信息已复制到剪贴板'));
+            }
+        });
+        
+        // 点击背景关闭
+        orderDetailDiv.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.remove();
+            }
+        });
+    } else {
+        alert('未找到订单信息');
+    }
+});
+
+// ========== 在这里添加以下代码 ==========
+// 订单页面
+ordersClose.addEventListener('click', closeOrdersPage);
+userProfileBtn.addEventListener('click', openProfilePage);
+
+// 个人资料页面
+profileClose.addEventListener('click', closeProfilePage);
+
+// 订单筛选
+filterItems.forEach(item => {
+    item.addEventListener('click', function() {
+        filterItems.forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        const status = this.getAttribute('data-status');
+        loadOrders(status);
+    });
+});
+
+// 去购物按钮
+goShoppingBtn.addEventListener('click', function() {
+    closeOrdersPage();
+    bottomNavItems.forEach(item => item.classList.remove('active'));
+    document.querySelector('[data-page="home"]').classList.add('active');
+});
+
+// 订单详情关闭
+orderDetailClose.addEventListener('click', closeOrderDetail);
+orderDetailModal.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeOrderDetail();
+    }
+});
+
+// 退出登录
+logoutBtn.addEventListener('click', function() {
+    if (confirm('确定要退出登录吗？')) {
+        showToast('已退出登录');
+        closeProfilePage();
+        closeOrdersPage();
+        bottomNavItems.forEach(item => item.classList.remove('active'));
+        document.querySelector('[data-page="home"]').classList.add('active');
+    }
+});
+
+// 从个人资料跳转到订单页面
+goAllOrdersBtn.addEventListener('click', function() {
+    closeProfilePage();
+    openOrdersPage();
+});
+// ========== 添加结束 ==========
+
 
             // 初始化
             updateCartDisplay();
@@ -5566,7 +6998,385 @@ initWelcomeAnimation();
             console.log(`已添加 ${Object.keys(products).length} 个商品，包含完整的美好系列产品。`);
             console.log('结算页面已集成完成！');
         });
+        // ========== 第一阶段：模拟支付系统 ==========
+
+// 1. 初始化支付功能
+function initPaymentFunctions() {
+    console.log('支付功能初始化');
+}
+
+// 2. 支付宝直接跳转（模拟）
+function jumpToAlipayDirect(orderInfo) {
+    // 显示支付提示
+    if (confirm(`支付宝支付 ¥${orderInfo.amount}\n订单号: ${orderInfo.order_id}\n\n请确认支付后返回页面点击"支付成功"按钮`)) {
+        // 显示模拟支付界面
+        showMockPayment(orderInfo.order_id, 'alipay', orderInfo.amount);
+    }
+}
+
+// 3. 微信直接跳转（模拟）
+function jumpToWechatDirect(orderInfo) {
+    // 显示支付提示
+    if (confirm(`微信支付 ¥${orderInfo.amount}\n订单号: ${orderInfo.order_id}\n\n请使用微信扫描二维码支付`)) {
+        // 显示模拟支付界面
+        showMockPayment(orderInfo.order_id, 'wechat', orderInfo.amount);
+    }
+}// 在支付函数代码区域添加
+function returnToHomePage() {
+    // 隐藏所有可能打开的页面
+    successPage.style.display = 'none';
+    checkoutPage.style.display = 'none';
+    productDetail.style.display = 'none';
+    cartSidebar.style.right = '-100%';
+    overlay.style.display = 'none';
+    categoryPage.style.display = 'none';
+    aboutPage.style.display = 'none';
+    hotProductsPage.style.display = 'none';
+    categoryProductsPage.style.display = 'none';
+    
+    // 显示主界面
+    document.querySelector('main').style.display = 'block';
+    document.querySelector('.header').style.display = 'flex';
+    document.querySelector('.search-container').style.display = 'block';
+    document.querySelector('.bottom-nav').style.display = 'flex';
+    
+    // 重置底部导航
+    bottomNavItems.forEach(item => {
+        if (item.getAttribute('data-page') === 'home') {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+    
+    // 滚动到顶部
+    window.scrollTo(0, 0);
+    
+    // 清空购物车
+    cart.items = [];
+    updateCartDisplay();
+    
+    // 显示欢迎消息
+    showToast('欢迎回到首页！');
+}
+
+// 4. 显示模拟支付界面
+function showMockPayment(orderId, paymentType, amount) {
+    // 创建模拟支付弹窗
+    const mockPayDiv = document.createElement('div');
+    mockPayDiv.id = 'mock-payment-modal';
+    mockPayDiv.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 3000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `;
+    
+    mockPayDiv.innerHTML = `
+        <div style="background: white; padding: 30px; border-radius: 15px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <h3 style="color: #FF7B29; margin-bottom: 20px;">${paymentType === 'alipay' ? '支付宝支付' : '微信支付'}模拟</h3>
+            <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                <p style="margin: 5px 0;"><strong>订单号:</strong> ${orderId}</p>
+                <p style="margin: 5px 0;"><strong>支付金额:</strong> ¥${amount}</p>
+                <p style="margin: 5px 0;"><strong>支付方式:</strong> ${paymentType === 'alipay' ? '支付宝' : '微信'}</p>
+            </div>
+            
+            <div style="margin: 25px 0;">
+                <button id="mock-pay-success" style="padding: 12px 30px; background: #4CAF50; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-right: 10px;">
+                    <i class="fas fa-check-circle"></i> 模拟支付成功
+                </button>
+                <button id="mock-pay-fail" style="padding: 12px 30px; background: #f44336; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">
+                    <i class="fas fa-times-circle"></i> 模拟支付失败
+                </button>
+            </div>
+            
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd;">
+                <p style="font-size: 14px; color: #666; margin-bottom: 10px;">模拟支付说明：</p>
+                <p style="font-size: 12px; color: #999; line-height: 1.4;">
+                    这是演示功能，用于测试支付流程。实际支付需要接入支付宝/微信支付接口。<br>
+                    点击"模拟支付成功"将完成订单，点击"模拟支付失败"将取消支付。
+                </p>
+            </div>
+            
+            <button id="close-mock-modal" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; color: #999; cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(mockPayDiv);
+    
+    // 支付成功按钮事件
+    document.getElementById('mock-pay-success').addEventListener('click', function() {
+        mockPayDiv.remove();
+        completePayment(orderId, paymentType, true);
+    });
+    
+    // 支付失败按钮事件
+    document.getElementById('mock-pay-fail').addEventListener('click', function() {
+        mockPayDiv.remove();
+        completePayment(orderId, paymentType, false);
+    });
+    
+    // 关闭按钮事件
+    document.getElementById('close-mock-modal').addEventListener('click', function() {
+        mockPayDiv.remove();
+        alert('支付已取消');
+    });
+}
+
+// 5. 完成支付流程
+function completePayment(orderId, paymentType, success) {
+    if (success) {
+        // 更新订单状态
+        const order = JSON.parse(localStorage.getItem('current_order') || '{}');
+        order.status = 'paid';
+        order.paid_at = new Date().toISOString();
+        localStorage.setItem('current_order', JSON.stringify(order));
+        
+        // 保存到历史订单
+        saveToOrderHistory(order);
+        
+        // 显示成功页面
+        checkoutPage.style.display = 'none';
+        successPage.style.display = 'block';
+        successPage.classList.add('page-enter');
+        
+        // 更新支付信息
+        successPaymentMethod.textContent = paymentType === 'alipay' ? '支付宝支付' : '微信支付';
+        successPaymentTime.textContent = new Date().toLocaleString();
+        
+        // 清空购物车
+        cart.items = [];
+        updateCartDisplay();
+        
+        // 显示成功提示
+        setTimeout(() => {
+            showToast('支付成功！订单已完成处理');
+        }, 500);
+        
+        // ✅ 新增：5秒后自动返回首页（可选）
+        setTimeout(() => {
+            if (successPage.style.display !== 'none') {
+                const autoReturn = confirm('支付成功！5秒后将自动返回首页，点击"确定"立即返回，点击"取消"查看订单详情');
+                if (autoReturn) {
+                    // 模拟点击返回首页按钮
+                    backHomeBtn.click();
+                }
+            }
+        }, 5000);
+    } else {
+        // 支付失败
+        alert('支付失败，请重试');
+        showToast('支付失败，请重新尝试');
+    }
+}
+
+
+// 6. 保存订单到历史记录
+function saveToOrderHistory(order) {
+    let orderHistory = JSON.parse(localStorage.getItem('order_history') || '[]');
+    orderHistory.push(order);
+    
+    // 只保存最近50个订单
+    if (orderHistory.length > 50) {
+        orderHistory = orderHistory.slice(-50);
+    }
+    
+    localStorage.setItem('order_history', JSON.stringify(orderHistory));
+}
+
+// 7. 订单查询功能
+function queryPaymentStatus(orderId) {
+    // 先检查当前订单
+    const order = JSON.parse(localStorage.getItem('current_order') || '{}');
+    
+    if (order.order_id === orderId) {
+        return {
+            success: true,
+            order_id: orderId,
+            status: order.status || 'pending',
+            amount: order.amount,
+            payment_method: order.payment_method,
+            created_at: order.created_at,
+            paid_at: order.paid_at
+        };
+    }
+    
+    // 如果当前订单没有，查询历史订单
+    const orderHistory = JSON.parse(localStorage.getItem('order_history') || '[]');
+    const foundOrder = orderHistory.find(o => o.order_id === orderId);
+    
+    if (foundOrder) {
+        return {
+            success: true,
+            order_id: orderId,
+            status: foundOrder.status || 'unknown',
+            amount: foundOrder.amount,
+            payment_method: foundOrder.payment_method,
+            created_at: foundOrder.created_at,
+            paid_at: foundOrder.paid_at
+        };
+    }
+    
+    return {
+        success: false,
+        message: '订单不存在'
+    };
+}
+
+// 8. 添加订单查询按钮到页面
+function addOrderQueryFeature() {
+    // 检查是否已存在查询按钮
+    if (document.getElementById('order-query-btn')) return;
+    
+    // 创建订单查询按钮
+    const queryBtn = document.createElement('button');
+    queryBtn.id = 'order-query-btn';
+    queryBtn.innerHTML = '<i class="fas fa-search"></i>';
+    queryBtn.style.cssText = `
+        position: fixed;
+        bottom: 140px;
+        right: 20px;
+        background: linear-gradient(135deg, #FF7B29 0%, #FF9C29 100%);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255, 123, 41, 0.4);
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    `;
+    
+    // 添加悬停效果
+    queryBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1)';
+        this.style.boxShadow = '0 6px 20px rgba(255, 123, 41, 0.6)';
+    });
+    
+    queryBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.boxShadow = '0 4px 12px rgba(255, 123, 41, 0.4)';
+    });
+    
+    // 点击事件
+    queryBtn.addEventListener('click', function() {
+        const orderId = prompt('请输入订单号（以JY开头的订单号）:', '');
+        if (orderId && orderId.trim() !== '') {
+            const result = queryPaymentStatus(orderId.trim());
+            if (result.success) {
+                // 创建美观的提示框
+                const resultDiv = document.createElement('div');
+                resultDiv.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: white;
+                    padding: 25px;
+                    border-radius: 15px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    z-index: 4000;
+                    max-width: 400px;
+                    width: 90%;
+                    text-align: left;
+                `;
+                
+                const statusColor = result.status === 'paid' ? '#4CAF50' : 
+                                  result.status === 'pending' ? '#FF9800' : '#f44336';
+                
+                resultDiv.innerHTML = `
+                    <h3 style="color: #FF7B29; margin-bottom: 15px; display: flex; align-items: center;">
+                        <i class="fas fa-receipt" style="margin-right: 10px;"></i>订单查询结果
+                    </h3>
+                    <div style="margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                        <p style="margin: 8px 0;"><strong>订单号:</strong> ${result.order_id}</p>
+                        <p style="margin: 8px 0;"><strong>状态:</strong> <span style="color: ${statusColor}; font-weight: bold;">${result.status === 'paid' ? '支付成功' : result.status === 'pending' ? '待支付' : result.status}</span></p>
+                        <p style="margin: 8px 0;"><strong>金额:</strong> ¥${result.amount}</p>
+                        <p style="margin: 8px 0;"><strong>支付方式:</strong> ${result.payment_method === 'alipay' ? '支付宝' : '微信'}</p>
+                        <p style="margin: 8px 0;"><strong>创建时间:</strong> ${new Date(result.created_at).toLocaleString()}</p>
+                        ${result.paid_at ? `<p style="margin: 8px 0;"><strong>支付时间:</strong> ${new Date(result.paid_at).toLocaleString()}</p>` : ''}
+                    </div>
+                    <button id="close-result-btn" style="padding: 10px 20px; background: #FF7B29; color: white; border: none; border-radius: 6px; cursor: pointer; display: block; margin: 0 auto;">
+                        关闭
+                    </button>
+                `;
+                
+                document.body.appendChild(resultDiv);
+                
+                // 关闭按钮事件
+                document.getElementById('close-result-btn').addEventListener('click', function() {
+                    resultDiv.remove();
+                });
+                
+                // 点击背景关闭
+                resultDiv.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.remove();
+                    }
+                });
+            } else {
+                alert('未找到该订单，请检查订单号是否正确');
+            }
+        }
+    });
+    
+    document.body.appendChild(queryBtn);
+    
+    // 添加提示标签
+    const tooltip = document.createElement('div');
+    tooltip.innerHTML = '订单查询';
+    tooltip.style.cssText = `
+        position: fixed;
+        bottom: 210px;
+        right: 30px;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        z-index: 998;
+        opacity: 0;
+        transition: opacity 0.3s;
+    `;
+    document.body.appendChild(tooltip);
+    
+    // 显示/隐藏提示
+    queryBtn.addEventListener('mouseenter', function() {
+        tooltip.style.opacity = '1';
+    });
+    
+    queryBtn.addEventListener('mouseleave', function() {
+        tooltip.style.opacity = '0';
+    });
+}
+
+// 9. 初始化所有支付功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 延迟初始化，确保DOM完全加载
+    setTimeout(() => {
+        initPaymentFunctions();
+        addOrderQueryFeature();
+        console.log('模拟支付系统已加载');
+    }, 1000);
+});
+
+// ========== 第一阶段代码结束 ==========
     </script>
     </div> <!-- 结束main-content -->
+
+    
 </body>
 </html>
